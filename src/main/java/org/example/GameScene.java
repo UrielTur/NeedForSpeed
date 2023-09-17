@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 public class GameScene extends JPanel implements KeyListener {
 
@@ -14,6 +15,9 @@ public class GameScene extends JPanel implements KeyListener {
     private CarPlayer carPlayer;
     private CarsRectangle carsRectangle;
     private boolean[] pressedKey;
+    private Random random1;
+    private Random random2;
+    private Random random3;
 
 
     public GameScene(Window mainWindow) {
@@ -27,6 +31,10 @@ public class GameScene extends JPanel implements KeyListener {
         this.carPlayer = new CarPlayer(330, 520);
         this.carsRectangle = new CarsRectangle();
         this.pressedKey = new boolean[2];
+        this.random1 = new Random();
+        this.random2 = new Random();
+        this.random3 = new Random();
+
 
 
         this.setDoubleBuffered(true);
@@ -62,6 +70,16 @@ public class GameScene extends JPanel implements KeyListener {
                 this.roadSigns2.run();
                 this.roadSigns3.run();
                 this.roadSigns4.run();
+                this.carsRectangle.run();
+
+                if (this.roadSigns1.getyOfBackground1() == Window.getWINDOW_HEIGHT()){
+                    this.roadSigns1.setyOfBackground1(-(Window.getWINDOW_HEIGHT() - 10));
+                }
+                if (this.roadSigns1.getyOfBackground2() == Window.getWINDOW_HEIGHT()){
+                    this.roadSigns1.setyOfBackground2(-(Window.getWINDOW_HEIGHT() - 10));
+                }
+
+
                 if (this.roadSigns1.getYOfLines()==750){
                     this.roadSigns1.setYOfLines(-250);
                 }
@@ -81,22 +99,33 @@ public class GameScene extends JPanel implements KeyListener {
                     this.roadSigns1.setyOfRedWhite2(-(Window.getWINDOW_HEIGHT()));
                 }
 
+
+                if (this.carsRectangle.getyOfCar1()==800){
+                    this.carsRectangle.setyOfCar1(-(random1.nextInt(100, 1000)));
+                }
+                if (this.carsRectangle.getyOfCar2()==800){
+                    this.carsRectangle.setyOfCar2(-(random2.nextInt(250, 1000)));
+                }
+                if (this.carsRectangle.getyOfCar3()==800){
+                    this.carsRectangle.setyOfCar3(-(random3.nextInt(150 , 1000)));
+                }
+
                 int dx = 0;
 //                int dy = 0;
                 try {
                     if (pressedKey[0]) {
-                        dx += 2;
+                        dx += 1;
 //                        dy -= 1;
                     }
 
                     if (pressedKey[1]) {
-                        dx -= 2;
+                        dx -= 1;
 //                        dy -= 1;
                     }
                     this.carPlayer.move(dx);
 
 
-                    Thread.sleep(3);
+                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

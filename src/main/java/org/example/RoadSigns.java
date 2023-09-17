@@ -4,18 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RoadSigns {
-    private final int xOfBackground = 0;
-    private final int yOfBackground = 0;
     private final int xOfLine1;
     private final int xOfLine2;
     private int yOfLines;
-    private ImageIcon leftRedWhite1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
+    private ImageIcon asphaltImage1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road123.png");
+    private ImageIcon asphaltImage2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road123.png");
 
+
+    private ImageIcon leftRedWhite1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
     private ImageIcon leftRedWhite2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
     private ImageIcon rightRedWhite1  = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
     private ImageIcon rightRedWhite2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
     private int yOfRedWhite1 = 0;
     private int yOfRedWhite2 = this.yOfRedWhite1 - this.leftRedWhite1.getIconHeight();
+    private final int xOfBackground = 0;
+    private int yOfBackground1 = 0;
+    private int yOfBackground2 = this.yOfBackground1 - this.asphaltImage1.getIconHeight();
+
 
 
 
@@ -31,13 +36,15 @@ public class RoadSigns {
     public void run() {
         this.yOfLines += 2;
         this.yOfRedWhite1 += 2;
-        this.yOfRedWhite2 +=2;
+        this.yOfRedWhite2 += 2;
+        this.yOfBackground1 += 2;
+        this.yOfBackground2 += 2;
 
     }
 
     public void paintBackground(Graphics graphics) {
-        ImageIcon asphaltImage = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road123.png");
-        asphaltImage.paintIcon(null, graphics, this.xOfBackground, this.yOfBackground);
+        this.asphaltImage1.paintIcon(null, graphics, this.xOfBackground, this.yOfBackground1);
+        this.asphaltImage2.paintIcon(null, graphics, this.xOfBackground, this.yOfBackground2);
 
     }
 
@@ -57,7 +64,7 @@ public class RoadSigns {
         return yOfLines;
     }
 
-    public void setYOfLines(int yOfLines) {//ממחלקה ROADSIGN
+    public void setYOfLines(int yOfLines) {
         this.yOfLines = yOfLines;
     }
 
@@ -76,5 +83,21 @@ public class RoadSigns {
 
     public void setyOfRedWhite2(int yOfRedWhite2) {
         this.yOfRedWhite2 = yOfRedWhite2;
+    }
+
+    public int getyOfBackground1() {
+        return yOfBackground1;
+    }
+
+    public void setyOfBackground1(int yOfBackground1) {
+        this.yOfBackground1 = yOfBackground1;
+    }
+
+    public int getyOfBackground2() {
+        return yOfBackground2;
+    }
+
+    public void setyOfBackground2(int yOfBackground2) {
+        this.yOfBackground2 = yOfBackground2;
     }
 }

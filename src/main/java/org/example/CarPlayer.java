@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,9 +10,13 @@ public class CarPlayer {
 
     private int x;
     private int y;
+    private ImageIcon car;
+
+    public void setCar(ImageIcon car) {
+        this.car = car;
+    }
 
     public CarPlayer(int x, int y){
-
         this.x = x;
         this.y = y;
     }
