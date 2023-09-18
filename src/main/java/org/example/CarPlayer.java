@@ -1,20 +1,16 @@
 package org.example;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class CarPlayer {
 
-    private int x;
-    private int y;
-    private ImageIcon car;
 
-    public void setCar(ImageIcon car) {
-        this.car = car;
-    }
+    private int x;
+    private final int y;
+
 
     public CarPlayer(int x, int y){
         this.x = x;
@@ -41,8 +37,12 @@ public class CarPlayer {
     }
 
 
-    public void move(int dx) {
+    public void move(long dx) {
         this.x += dx;
-//        this.y += dy;
+    }
+
+
+    public Rectangle calculateRectangle() {
+        return new Rectangle(this.x, this.y, 50 , 50);
     }
 }

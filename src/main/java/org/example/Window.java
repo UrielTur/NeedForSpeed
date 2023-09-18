@@ -12,6 +12,8 @@ public class Window extends JFrame {
     private final OptionsScreen optionsScreen;
     private final GameScene gameScene;
     private final InstructionsScreen instructionsScreen;
+    private final GameOverScreen gameOverScreen;
+
 
 
 
@@ -40,11 +42,21 @@ public class Window extends JFrame {
         this.gameScene.setVisible(false);
 
 
+        this.gameOverScreen = new GameOverScreen();
+        this.add(gameOverScreen);
+        this.gameOverScreen.setVisible(false);
+
+
+
+
+
+
 
 
         FirstWindowScreen.getButtonOfEnter().addActionListener(e -> {
             optionsScreen.setVisible(true);
             firstWindowScreen.setVisible(false);
+            gameOverScreen.setVisible(false);
         });
 
 
@@ -53,12 +65,14 @@ public class Window extends JFrame {
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
             this.gameScene.setVisible(false);
+            this.gameOverScreen.setVisible(false);
         });
 
 
         InstructionsScreen.getBackButton().addActionListener(e -> {
             this.instructionsScreen.setVisible(false);
             this.optionsScreen.setVisible(true);
+            this.gameOverScreen.setVisible(false);
         });
 
 
@@ -67,7 +81,11 @@ public class Window extends JFrame {
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
             this.instructionsScreen.setVisible(false);
+//            this.gameOverScreen.setVisible(false);
+            this.gameScene.mainGameLoop();
+            this.gameOverScreen.setVisible(true);
         });
+
 
 
 

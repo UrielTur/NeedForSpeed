@@ -4,7 +4,7 @@ import java.awt.*;
 
 
 public class InstructionsScreen extends JPanel {
-    private JLabel title;
+    private final JLabel title;
 
     private static JButton backButton;
 

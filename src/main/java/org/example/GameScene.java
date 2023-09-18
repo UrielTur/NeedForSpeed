@@ -8,16 +8,17 @@ import java.util.Random;
 
 public class GameScene extends JPanel implements KeyListener {
 
-    private RoadSigns roadSigns1;
-    private RoadSigns roadSigns2;
-    private RoadSigns roadSigns3;
-    private RoadSigns roadSigns4;
-    private CarPlayer carPlayer;
-    private CarsRectangle carsRectangle;
-    private boolean[] pressedKey;
-    private Random random1;
-    private Random random2;
-    private Random random3;
+    private final RoadSigns roadSigns1;
+    private final RoadSigns roadSigns2;
+    private final RoadSigns roadSigns3;
+    private final RoadSigns roadSigns4;
+    private final CarPlayer carPlayer;
+    private final CarsRectangle carsRectangle;
+    private final boolean[] pressedKey;
+    private final Random random1;
+    private final Random random2;
+    private final Random random3;
+    private GameOverScreen gameOverScreen;
 
 
     public GameScene(Window mainWindow) {
@@ -34,14 +35,14 @@ public class GameScene extends JPanel implements KeyListener {
         this.random1 = new Random();
         this.random2 = new Random();
         this.random3 = new Random();
-
+        this.gameOverScreen = new GameOverScreen();
+        this.add(gameOverScreen);
 
 
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         this.requestFocus();
         mainWindow.setVisible(true);
-        mainGameLoop();
         this.addKeyListener(this);
     }
 
@@ -64,7 +65,11 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void mainGameLoop() {
         new Thread(() -> {
+
+
             while (true) {
+
+
                 repaint();
                 this.roadSigns1.run();
                 this.roadSigns2.run();
@@ -72,66 +77,100 @@ public class GameScene extends JPanel implements KeyListener {
                 this.roadSigns4.run();
                 this.carsRectangle.run();
 
-                if (this.roadSigns1.getyOfBackground1() == Window.getWINDOW_HEIGHT()){
+                if (this.roadSigns1.getyOfBackground1() >= Window.getWINDOW_HEIGHT()){
                     this.roadSigns1.setyOfBackground1(-(Window.getWINDOW_HEIGHT() - 10));
                 }
-                if (this.roadSigns1.getyOfBackground2() == Window.getWINDOW_HEIGHT()){
+                if (this.roadSigns1.getyOfBackground2() >= Window.getWINDOW_HEIGHT()){
                     this.roadSigns1.setyOfBackground2(-(Window.getWINDOW_HEIGHT() - 10));
                 }
 
 
-                if (this.roadSigns1.getYOfLines()==750){
+                if (this.roadSigns1.getYOfLines()>=750){
                     this.roadSigns1.setYOfLines(-250);
                 }
-                if (this.roadSigns2.getYOfLines()==750){
+                if (this.roadSigns2.getYOfLines()>=750){
                     this.roadSigns2.setYOfLines(-250);
                 }
-                if (this.roadSigns3.getYOfLines()==750){
+                if (this.roadSigns3.getYOfLines()>=750){
                     this.roadSigns3.setYOfLines(-250);
                 }
-                if (this.roadSigns4.getYOfLines()==750){
+                if (this.roadSigns4.getYOfLines()>=750){
                     this.roadSigns4.setYOfLines(-250);
                 }
-                if (this.roadSigns1.getyOfRedWhite1() == (Window.getWINDOW_HEIGHT())){
+                if (this.roadSigns1.getyOfRedWhite1() >= (Window.getWINDOW_HEIGHT())){
                     this.roadSigns1.setyOfRedWhite1(-(Window.getWINDOW_HEIGHT()));
                 }
-                if (this.roadSigns1.getyOfRedWhite2() == Window.getWINDOW_HEIGHT()){
+                if (this.roadSigns1.getyOfRedWhite2() >= Window.getWINDOW_HEIGHT()){
                     this.roadSigns1.setyOfRedWhite2(-(Window.getWINDOW_HEIGHT()));
                 }
 
 
-                if (this.carsRectangle.getyOfCar1()==800){
+                if (this.carsRectangle.getyOfCar1()>=800){
                     this.carsRectangle.setyOfCar1(-(random1.nextInt(100, 1000)));
                 }
-                if (this.carsRectangle.getyOfCar2()==800){
+                if (this.carsRectangle.getyOfCar2()>=800){
                     this.carsRectangle.setyOfCar2(-(random2.nextInt(250, 1000)));
                 }
-                if (this.carsRectangle.getyOfCar3()==800){
+                if (this.carsRectangle.getyOfCar3()>=800){
                     this.carsRectangle.setyOfCar3(-(random3.nextInt(150 , 1000)));
                 }
 
-                int dx = 0;
-//                int dy = 0;
+
+                boolean hasCollision = collision(this.carsRectangle);
+                if (hasCollision) {
+                    showGameOverScreen();
+
+                    break;
+                }
+
+
+                long dx = 0;
                 try {
                     if (pressedKey[0]) {
                         dx += 1;
-//                        dy -= 1;
                     }
 
                     if (pressedKey[1]) {
                         dx -= 1;
-//                        dy -= 1;
                     }
                     this.carPlayer.move(dx);
 
 
-                    Thread.sleep(1);
+                    Thread.sleep(4);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
         }).start();
     }
+
+    public boolean collision(CarsRectangle carsRectangle) {
+        boolean collision = false;
+        if (carsRectangle.catchTheCar1().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar2().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar3().intersects(this.carPlayer.calculateRectangle())) {
+            collision = true;
+        }
+
+        return collision;
+    }
+
+    public boolean checkActivity(){
+        boolean activity = true;
+
+        if (collision(carsRectangle)){
+            activity = false;
+        }
+
+        return activity;
+    }
+
+    public void showGameOverScreen() {
+        setVisible(false); // סוגר את החלונית הנוכחית של GameScene
+        gameOverScreen.setVisible(true); // מציג את חלונית gameOverScreen
+    }
+
+
+
+
 
 
     public void keyTyped(KeyEvent e) {

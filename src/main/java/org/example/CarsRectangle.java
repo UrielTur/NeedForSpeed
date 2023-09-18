@@ -14,22 +14,21 @@ public class CarsRectangle {
     private int yOfCar2;
     private int yOfCar3;
 
+    private final int xOfCar1 = 330;
+    private final int xOfCar2 = 100;
+    private final int xOfCar3 = 550;
+
+
 
     public CarsRectangle() {
         Random random1 = new Random();
         Random random2 = new Random();
         Random random3 = new Random();
 
-        this.yOfCar1 = -(random1.nextInt(50 , 1000));
-        this.yOfCar2 = -(random2.nextInt(50 , 1000));
-        this.yOfCar3 = -(random3.nextInt(50, 1000));
+        this.yOfCar1 = -(random1.nextInt(50 , 1500));
+        this.yOfCar2 = -(random2.nextInt(50 , 1200));
+        this.yOfCar3 = -(random3.nextInt(50, 1800));
 
-//        Random random1 = new Random();
-//        Random random2 = new Random();
-//        Random random3 = new Random();
-//        this.y = random1.nextInt(100);
-//        this.y = random2.nextInt(550);
-//        this. = random3.nextInt(330);
 
         try {
             carImage1 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\BlueCar-removebg-min.png"));
@@ -44,21 +43,21 @@ public class CarsRectangle {
         int newWidth = 80;
         int newHeight = 120;
         Image scaledImage1 = carImage1.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage1, 550, this.yOfCar1, null);
+        graphics.drawImage(scaledImage1, this.xOfCar1, this.yOfCar1, null);
     }
 
     public void paintCarRectangle2(Graphics graphics) {
         int newWidth = 80;
         int newHeight = 120;
         Image scaledImage2 = carImage2.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage2, 100, this.yOfCar2, null);
+        graphics.drawImage(scaledImage2, this.xOfCar2, this.yOfCar2, null);
     }
 
     public void paintCarRectangle3(Graphics graphics) {
         int newWidth = 100;
         int newHeight = 190;
         Image scaledImage3 = carImage3.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage3, 330, this.yOfCar3, null);
+        graphics.drawImage(scaledImage3, this.xOfCar3, this.yOfCar3, null);
     }
 
     public void run(){
@@ -66,9 +65,9 @@ public class CarsRectangle {
         Random random2 = new Random();
         Random random3 = new Random();
 
-        this.yOfCar1 += (random1.nextInt(1 , 2));
-        this.yOfCar2 += (random2.nextInt(1 , 2));
-        this.yOfCar3 += (random3.nextInt(1 , 2));
+        this.yOfCar1 += (random1.nextInt(2 , 3));
+        this.yOfCar2 += (random2.nextInt(2 , 3));
+        this.yOfCar3 += (random3.nextInt(2 , 3));
     }
 
     public void setyOfCar1(int yOfCar1) {
@@ -94,5 +93,17 @@ public class CarsRectangle {
 
     public int getyOfCar3() {
         return yOfCar3;
+    }
+
+    public Rectangle catchTheCar1() {
+        return new Rectangle (this.xOfCar1, this.yOfCar1 , 50, 50);
+    }
+
+    public Rectangle catchTheCar2() {
+        return new Rectangle (this.xOfCar2, this.yOfCar2 , 50, 50);
+    }
+
+    public Rectangle catchTheCar3() {
+        return new Rectangle (this.xOfCar3, this.yOfCar3 , 50,  50);
     }
 }

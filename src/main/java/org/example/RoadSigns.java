@@ -7,8 +7,8 @@ public class RoadSigns {
     private final int xOfLine1;
     private final int xOfLine2;
     private int yOfLines;
-    private ImageIcon asphaltImage1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road123.png");
-    private ImageIcon asphaltImage2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road123.png");
+    private ImageIcon asphaltImage1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road-min.png");
+    private ImageIcon asphaltImage2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road-min.png");
 
 
     private ImageIcon leftRedWhite1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
@@ -34,11 +34,11 @@ public class RoadSigns {
     }
 
     public void run() {
-        this.yOfLines += 2;
+        this.yOfLines += 3;
         this.yOfRedWhite1 += 2;
         this.yOfRedWhite2 += 2;
-        this.yOfBackground1 += 2;
-        this.yOfBackground2 += 2;
+        this.yOfBackground1 += 3;
+        this.yOfBackground2 += 3;
 
     }
 
