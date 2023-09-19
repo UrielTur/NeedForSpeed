@@ -7,9 +7,9 @@ import java.io.File;
 
 public class CarPlayer {
 
-
     private int x;
     private final int y;
+
 
 
     public CarPlayer(int x, int y){
@@ -18,8 +18,8 @@ public class CarPlayer {
     }
 
 
-    public void paintCar(Graphics graphics){
 
+    public void paintCar(Graphics graphics){
         try {
             BufferedImage carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
 

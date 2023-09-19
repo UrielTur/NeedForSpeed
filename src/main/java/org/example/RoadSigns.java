@@ -15,6 +15,7 @@ public class RoadSigns {
     private final ImageIcon leftRedWhite2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
     private final ImageIcon rightRedWhite1  = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
     private final ImageIcon rightRedWhite2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
+
     private int yOfRedWhite1 = 0;
     private int yOfRedWhite2 = this.yOfRedWhite1 - this.leftRedWhite1.getIconHeight();
     private final int xOfBackground = 0;
@@ -25,9 +26,7 @@ public class RoadSigns {
 
 
 
-
-
-    public RoadSigns( int x1, int x2, int y) {//ממחלקה ROADSIGNS
+    public RoadSigns( int x1, int x2, int y) {
         this.xOfLine1 = x1;
         this.xOfLine2 = x2;
         this.yOfLines = y;
@@ -39,7 +38,6 @@ public class RoadSigns {
         this.yOfRedWhite2 += 2;
         this.yOfBackground1 += 3;
         this.yOfBackground2 += 3;
-
     }
 
     public void paintBackground(Graphics graphics) {
