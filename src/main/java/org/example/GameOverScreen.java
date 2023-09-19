@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GameOverScreen extends JPanel{
 
-    private JLabel textOfWelcome;
+    private final JLabel textOfWelcome;
 
     private final Color myColor =  new Color(199 , 58 , 82);
 
@@ -27,8 +27,5 @@ public class GameOverScreen extends JPanel{
 
     }
 
-    public void showGameOver() {
-        // הצג את מסך המשחק הפסד
-        this.setVisible(true);
-    }
+
 }

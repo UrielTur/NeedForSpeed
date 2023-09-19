@@ -153,15 +153,7 @@ public class GameScene extends JPanel implements KeyListener {
         return collision;
     }
 
-    public boolean checkActivity(){
-        boolean activity = true;
 
-        if (collision(carsRectangle)){
-            activity = false;
-        }
-
-        return activity;
-    }
 
     public void showGameOverScreen() {
         setVisible(false); // סוגר את החלונית הנוכחית של GameScene
