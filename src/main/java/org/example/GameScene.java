@@ -66,9 +66,7 @@ public class GameScene extends JPanel implements KeyListener {
     public void mainGameLoop() {
         new Thread(() -> {
 
-
             while (true) {
-
 
                 repaint();
                 this.roadSigns1.run();
@@ -97,6 +95,8 @@ public class GameScene extends JPanel implements KeyListener {
                 if (this.roadSigns4.getYOfLines()>=750){
                     this.roadSigns4.setYOfLines(-250);
                 }
+
+
                 if (this.roadSigns1.getyOfRedWhite1() >= (Window.getWINDOW_HEIGHT())){
                     this.roadSigns1.setyOfRedWhite1(-(Window.getWINDOW_HEIGHT()));
                 }
@@ -119,7 +119,6 @@ public class GameScene extends JPanel implements KeyListener {
                 boolean hasCollision = collision(this.carsRectangle);
                 if (hasCollision) {
                     showGameOverScreen();
-
                     break;
                 }
 
@@ -134,7 +133,6 @@ public class GameScene extends JPanel implements KeyListener {
                         dx -= 1;
                     }
                     this.carPlayer.move(dx);
-
 
                     Thread.sleep(4);
                 } catch (InterruptedException e) {
@@ -164,7 +162,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
     public void keyTyped(KeyEvent e) {
 
     }
@@ -176,7 +173,6 @@ public class GameScene extends JPanel implements KeyListener {
             pressedKey[1] = true;
         }
     }
-
 
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {

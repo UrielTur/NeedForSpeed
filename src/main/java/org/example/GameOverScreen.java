@@ -11,8 +11,6 @@ public class GameOverScreen extends JPanel{
 
 
 
-
-
     public GameOverScreen() {
         setLayout(null); // מבטל את הפרישה האוטומטית של מיקום הרכיבים בפאנל
         setPreferredSize(new Dimension(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT())); // מגדיר גודל רצוי לפאנל
