@@ -4,11 +4,26 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class CarPlayer {
 
     private int x;
     private final int y;
+
+
+    private static BufferedImage carImage;
+
+    static {
+        try {
+            carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ;
+    private RoadSigns roadSigns = new RoadSigns(0 , 0 , 0);
 
 
 
@@ -21,7 +36,6 @@ public class CarPlayer {
 
     public void paintCar(Graphics graphics){
         try {
-            BufferedImage carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
             int newWidth = 85;
             int newHeight = 125;
 
@@ -43,5 +57,24 @@ public class CarPlayer {
 
     public Rectangle calculateRectangle() {
         return new Rectangle(this.x, this.y, 50 , 50);
+    }
+
+
+    public void stopRun() {
+        if (this.x < roadSigns.getLeftRedWhite1().getIconWidth()) {
+            this.x = roadSigns.getLeftRedWhite1().getIconWidth();
+        }
+        if (this.x > (Window.getWINDOW_WIDTH() - roadSigns.getRightRedWhite1().getIconWidth()) - 85) {
+            this.x = Window.getWINDOW_WIDTH() - roadSigns.getRightRedWhite1().getIconWidth() -85;
+        }
+    }
+
+
+    public int getX() {
+        return x;
+    }
+
+    public int getCarImageWidth() {
+        return carImage.getWidth();
     }
 }

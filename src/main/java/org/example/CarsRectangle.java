@@ -30,14 +30,6 @@ public class CarsRectangle {
 
 
 
-    public void paintCarRectangle2(Graphics graphics) {
-        int newWidth = 80;
-        int newHeight = 120;
-        Image scaledImage2 = carImage2.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage2, this.xOfCar2, this.yOfCar2, null);
-
-    }
-
     public CarsRectangle() {
         Random random1 = new Random();
         Random random2 = new Random();
@@ -72,6 +64,14 @@ public class CarsRectangle {
         int newHeight = 120;
         Image scaledImage1 = carImage1.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage1, this.xOfCar1, this.yOfCar1, null);
+    }
+
+    public void paintCarRectangle2(Graphics graphics) {
+        int newWidth = 80;
+        int newHeight = 120;
+        Image scaledImage2 = carImage2.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        graphics.drawImage(scaledImage2, this.xOfCar2, this.yOfCar2, null);
+
     }
 
     public void paintCarRectangle3(Graphics graphics) {

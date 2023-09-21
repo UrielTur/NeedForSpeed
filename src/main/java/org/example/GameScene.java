@@ -94,6 +94,8 @@ public class GameScene extends JPanel implements KeyListener {
                     this.carsRectangle.runDown2();
                 }
 
+                updatePlayer();
+
 
                 if (this.roadSigns1.getyOfBackground1() >= Window.getWINDOW_HEIGHT()){
                     this.roadSigns1.setyOfBackground1(-(Window.getWINDOW_HEIGHT() - 10));
@@ -172,12 +174,9 @@ public class GameScene extends JPanel implements KeyListener {
                         Thread.sleep(4);
                     } else if (this.counter > 20 && this.counter <= 35 ){
                         Thread.sleep(3);
-                    } else if (this.counter > 35 ){
+                    } else if (this.counter > 35 ) {
                         Thread.sleep(2);
-//                    } else if (this.counter > 45){
-//                        Thread.sleep(1);
                     }
-
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -195,9 +194,13 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
 
-    public int getCounter() {
-        return counter;
+    public void updatePlayer() {
+        if (carPlayer.getX() < roadSigns1.getLeftRedWhite1().getIconWidth() || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getIconWidth() - carPlayer.getCarImageWidth()) || carPlayer.getX() < roadSigns1.getLeftRedWhite2().getIconWidth() || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getIconWidth() - carPlayer.getCarImageWidth())) {
+            carPlayer.stopRun();
+        }
     }
+
+
 
     public void keyTyped(KeyEvent e) {
 

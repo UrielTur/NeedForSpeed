@@ -100,4 +100,20 @@ public class RoadSigns {
     public void setyOfBackground2(int yOfBackground2) {
         this.yOfBackground2 = yOfBackground2;
     }
+
+    public ImageIcon getLeftRedWhite1() {
+        return leftRedWhite1;
+    }
+
+    public ImageIcon getLeftRedWhite2() {
+        return leftRedWhite2;
+    }
+
+    public ImageIcon getRightRedWhite1() {
+        return rightRedWhite1;
+    }
+
+    public ImageIcon getRightRedWhite2() {
+        return rightRedWhite2;
+    }
 }
