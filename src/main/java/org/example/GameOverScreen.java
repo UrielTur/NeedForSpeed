@@ -6,8 +6,9 @@ import java.awt.*;
 public class GameOverScreen extends JPanel{
 
     private final JLabel textOfWelcome;
+    private static JButton closeOption;
 
-    private final Color myColor =  new Color(199 , 58 , 82);
+    private final Color myColor =  new Color(190 , 0 , 0);
 
 
 
@@ -18,12 +19,20 @@ public class GameOverScreen extends JPanel{
 
 
         // הוספת הרכיבים לפאנל
-        textOfWelcome = new JLabel("Game Over");
-        textOfWelcome.setBounds(225, 250, 550, 50); // מגדיר מיקום וגודל לתווית
-        textOfWelcome.setFont(new Font("Arial" , Font.BOLD , 45));
+        textOfWelcome = new JLabel("Game Over!!!");
+        textOfWelcome.setBounds(170, 200, 550, 50); // מגדיר מיקום וגודל לתווית
+        textOfWelcome.setFont(new Font("Arial" , Font.BOLD , 65));
+        textOfWelcome.setForeground(Color.WHITE);
         add(textOfWelcome);
+
+        closeOption = new JButton("Close");
+        closeOption.setBounds(200, 400, 300, 40); // מגדיר מיקום וגודל לכפתור
+        closeOption.setFont(new Font("Arial" , Font.BOLD , 20));
+        add(closeOption);
 
     }
 
-
+    public static JButton getCloseOption() {
+        return closeOption;
+    }
 }

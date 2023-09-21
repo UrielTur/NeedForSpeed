@@ -22,9 +22,8 @@ public class CarPlayer {
     public void paintCar(Graphics graphics){
         try {
             BufferedImage carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
-
-            int newWidth = 80;
-            int newHeight = 120;
+            int newWidth = 85;
+            int newHeight = 125;
 
             Image scaledImage = carImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
 

@@ -50,9 +50,6 @@ public class Window extends JFrame {
 
 
 
-
-
-
         FirstWindowScreen.getButtonOfEnter().addActionListener(e -> {
             optionsScreen.setVisible(true);
             firstWindowScreen.setVisible(false);
@@ -77,19 +74,20 @@ public class Window extends JFrame {
 
 
         OptionsScreen.getGameScene().addActionListener(e -> {
-            this.gameScene.setVisible(true);
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
             this.instructionsScreen.setVisible(false);
-//            this.gameOverScreen.setVisible(false);
-            this.gameScene.mainGameLoop();
             this.gameOverScreen.setVisible(true);
+            this.gameScene.setVisible(true);
+            this.gameScene.mainGameLoop();
+            this.gameScene.requestFocus();
+
         });
 
 
-
-
-
+        GameOverScreen.getCloseOption().addActionListener(e -> {
+            System.exit(0);
+        });
 
 
 

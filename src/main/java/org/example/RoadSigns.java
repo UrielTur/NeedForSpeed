@@ -21,6 +21,7 @@ public class RoadSigns {
     private final int xOfBackground = 0;
     private int yOfBackground1 = 0;
     private int yOfBackground2 = this.yOfBackground1 - this.asphaltImage1.getIconHeight();
+//    private int counter = 0;
 
 
 
@@ -29,13 +30,14 @@ public class RoadSigns {
     public RoadSigns( int x1, int x2, int y) {
         this.xOfLine1 = x1;
         this.xOfLine2 = x2;
+
         this.yOfLines = y;
     }
 
-    public void run() {
+    public void runDown() {
         this.yOfLines += 3;
-        this.yOfRedWhite1 += 2;
-        this.yOfRedWhite2 += 2;
+        this.yOfRedWhite1 += 3;
+        this.yOfRedWhite2 += 3;
         this.yOfBackground1 += 3;
         this.yOfBackground2 += 3;
     }
