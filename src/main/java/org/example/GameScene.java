@@ -89,10 +89,17 @@ public class GameScene extends JPanel implements KeyListener {
                 this.roadSigns2.runDown();
                 this.roadSigns3.runDown();
                 this.roadSigns4.runDown();
-                this.carsRectangle.runDown1();
-                if (this.counter >= 5 ){
-                    this.carsRectangle.runDown2();
-                }
+
+
+                    this.carsRectangle.runDown1();
+                    if (this.counter >= 5) {
+                        this.carsRectangle.runDown2();
+                    }
+
+//                }else {
+//                    this.carsRectangle.runDownFaster();
+//
+//                }
 
                 updatePlayer();
 
@@ -176,6 +183,8 @@ public class GameScene extends JPanel implements KeyListener {
                         Thread.sleep(3);
                     } else if (this.counter > 35 ) {
                         Thread.sleep(2);
+                    } else {
+                        Thread.sleep(1);
                     }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);

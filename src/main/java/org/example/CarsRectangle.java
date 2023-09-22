@@ -60,67 +60,70 @@ public class CarsRectangle {
         }
     }
     public void paintCarRectangle1(Graphics graphics) {
-        int newWidth = 85;
-        int newHeight = 120;
+        int newWidth = 100;
+        int newHeight = 125;
         Image scaledImage1 = carImage1.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage1, this.xOfCar1, this.yOfCar1, null);
     }
 
     public void paintCarRectangle2(Graphics graphics) {
-        int newWidth = 80;
-        int newHeight = 120;
+        int newWidth = 100;
+        int newHeight = 125;
         Image scaledImage2 = carImage2.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage2, this.xOfCar2, this.yOfCar2, null);
 
     }
 
     public void paintCarRectangle3(Graphics graphics) {
-        int newWidth = 100;
-        int newHeight = 190;
+        int newWidth = 110;
+        int newHeight = 200;
         Image scaledImage3 = carImage3.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage3, this.xOfCar3, this.yOfCar3, null);
     }
 
     public void paintCarRectangle4(Graphics graphics) {
-        int newWidth = 85;
-        int newHeight = 120;
+        int newWidth = 90;
+        int newHeight = 115;
         Image scaledImage4 = carImage4.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage4, this.xOfCar4, this.yOfCar4, null);
     }
 
     public void paintCarRectangle5(Graphics graphics) {
-        int newWidth = 95;
-        int newHeight = 160;
+        int newWidth = 110;
+        int newHeight = 165;
         Image scaledImage5 = carImage5.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage5, this.xOfCar5, this.yOfCar5, null);
     }
 
     public void paintCarRectangle6(Graphics graphics) {
-        int newWidth = 85;
-        int newHeight = 120;
+        int newWidth = 100;
+        int newHeight = 125;
         Image scaledImage6 = carImage6.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage6, this.xOfCar6, this.yOfCar6, null);
     }
 
     public void runDown1() {
-        Random random1 = new Random();
-        Random random2 = new Random();
-        Random random3 = new Random();
-
-        this.yOfCar1 += (random1.nextInt(2, 3));
-        this.yOfCar2 += (random2.nextInt(2, 3));
-        this.yOfCar3 += (random3.nextInt(2, 3));
+        this.yOfCar1 += 2;
+        this.yOfCar2 += 2;
+        this.yOfCar3 += 2;
 
     }
 
     public void runDown2(){
-        Random random1 = new Random();
-        Random random2 = new Random();
-        Random random3 = new Random();
+        this.yOfCar4 += 2;
+        this.yOfCar5 += 2;
+        this.yOfCar6 += 2;
+    }
 
-        this.yOfCar4 += (random1.nextInt(2, 3));
-        this.yOfCar5 += (random2.nextInt(2, 3));
-        this.yOfCar6 += (random3.nextInt(2, 3));
+    public void runDownFaster() {
+
+        this.yOfCar1 += 3;
+        this.yOfCar2 += 3;
+        this.yOfCar3 += 3;
+        this.yOfCar4 += 3;
+        this.yOfCar5 += 3;
+        this.yOfCar6 += 3;
+
     }
 
     public void setYOfCar1(int yOfCar1) {
