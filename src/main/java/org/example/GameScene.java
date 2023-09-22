@@ -84,10 +84,17 @@ public class GameScene extends JPanel implements KeyListener {
             while (true) {
 
                 repaint();
-                this.roadSigns1.runDown();
-                this.roadSigns2.runDown();
-                this.roadSigns3.runDown();
-                this.roadSigns4.runDown();
+                if (this.counter <= 40) {
+                    this.roadSigns1.runDown();
+                    this.roadSigns2.runDown();
+                    this.roadSigns3.runDown();
+                    this.roadSigns4.runDown();
+                } else {
+                    this.roadSigns1.runDownDouble();
+                    this.roadSigns2.runDownDouble();
+                    this.roadSigns3.runDownDouble();
+                    this.roadSigns4.runDownDouble();
+                }
 
 
                 this.carsRectangle.runDown1();
@@ -137,22 +144,22 @@ public class GameScene extends JPanel implements KeyListener {
 
 
                 if (this.carsRectangle.getyOfCar1()>=800){
-                    this.carsRectangle.setYOfCar1(-(random1.nextInt(100 , 10000)));
+                    this.carsRectangle.setYOfCar1(-(random1.nextInt(50 , 9000)));
                 }
                 if (this.carsRectangle.getyOfCar2()>=800){
-                    this.carsRectangle.setYOfCar2(-(random2.nextInt(100 , 10000)));
+                    this.carsRectangle.setYOfCar2(-(random2.nextInt(50 , 9000)));
                 }
                 if (this.carsRectangle.getyOfCar3()>=800){
-                    this.carsRectangle.setyOfCar3(-(random3.nextInt(100, 10000)));
+                    this.carsRectangle.setyOfCar3(-(random3.nextInt(50, 9000)));
                 }
                 if (this.carsRectangle.getyOfCar4() >= 800) {
-                    this.carsRectangle.setyOfCar4(-(random4.nextInt(1000, 10000)));
+                    this.carsRectangle.setyOfCar4(-(random4.nextInt(1000, 9000)));
                 }
                 if (this.carsRectangle.getyOfCar5() >= 800) {
-                    this.carsRectangle.setyOfCar5(-(random5.nextInt(1000, 10000)));
+                    this.carsRectangle.setyOfCar5(-(random5.nextInt(1000, 9000)));
                 }
                 if (this.carsRectangle.getyOfCar6() >= 800) {
-                    this.carsRectangle.setyOfCar6(-(random6.nextInt(1000, 10000)));
+                    this.carsRectangle.setyOfCar6(-(random6.nextInt(1000, 9000)));
                 }
 
 
@@ -161,7 +168,7 @@ public class GameScene extends JPanel implements KeyListener {
                 if (hasCollision) {
                     this.gameOverScreen.setVisible(true);
                     this.gameOverScreen.setCloseOptionVisible();
-                    setVisible(false);// סוגר את החלונית הנוכחית של GameScene
+                    setVisible(false);
                     break;
                 }
 
@@ -177,13 +184,13 @@ public class GameScene extends JPanel implements KeyListener {
                     }
                     this.carPlayer.move(dx);
 
-                    if (this.counter <= 15) {
+                    if (this.counter <= 20) {
                         Thread.sleep(4);
-                    } else if (this.counter > 20 && this.counter <= 35 ){
+                    } else if (this.counter > 20 && this.counter <= 45 ){
                         Thread.sleep(3);
-                    } else if (this.counter > 35 ) {
+                    } else if (this.counter > 45 && this.counter <=60 ) {
                         Thread.sleep(2);
-                    } else {
+                    } else if (this.counter > 50) {
                         Thread.sleep(1);
                     }
                 } catch (InterruptedException e) {

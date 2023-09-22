@@ -34,7 +34,16 @@ public class RoadSigns {
         this.yOfLines = y;
     }
 
+
     public void runDown() {
+        this.yOfLines += 2;
+        this.yOfRedWhite1 += 2;
+        this.yOfRedWhite2 += 2;
+        this.yOfBackground1 += 2;
+        this.yOfBackground2 += 2;
+    }
+
+    public void runDownDouble() {
         this.yOfLines += 3;
         this.yOfRedWhite1 += 3;
         this.yOfRedWhite2 += 3;
