@@ -49,7 +49,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
         mainWindow.add(gameOverScreen);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
@@ -91,10 +90,10 @@ public class GameScene extends JPanel implements KeyListener {
                 this.roadSigns4.runDown();
 
 
-                    this.carsRectangle.runDown1();
-                    if (this.counter >= 5) {
-                        this.carsRectangle.runDown2();
-                    }
+                this.carsRectangle.runDown1();
+                if (this.counter >= 5) {
+                    this.carsRectangle.runDown2();
+                }
 
 //                }else {
 //                    this.carsRectangle.runDownFaster();
@@ -161,6 +160,7 @@ public class GameScene extends JPanel implements KeyListener {
                 boolean hasCollision = collision(this.carsRectangle);
                 if (hasCollision) {
                     this.gameOverScreen.setVisible(true);
+                    this.gameOverScreen.setCloseOptionVisible();
                     setVisible(false);// סוגר את החלונית הנוכחית של GameScene
                     break;
                 }

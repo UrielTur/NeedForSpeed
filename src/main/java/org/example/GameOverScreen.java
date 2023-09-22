@@ -29,10 +29,16 @@ public class GameOverScreen extends JPanel{
         closeOption.setBounds(200, 400, 300, 40); // מגדיר מיקום וגודל לכפתור
         closeOption.setFont(new Font("Arial" , Font.BOLD , 20));
         add(closeOption);
+        closeOption.setVisible(false);
 
     }
 
     public static JButton getCloseOption() {
         return closeOption;
+    }
+
+
+    public void setCloseOptionVisible() {
+        closeOption.setVisible(true);
     }
 }

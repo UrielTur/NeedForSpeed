@@ -80,6 +80,7 @@ public class Window extends JFrame {
             this.gameOverScreen.setVisible(true);
             this.gameScene.setVisible(true);
             this.gameScene.mainGameLoop();
+            this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
 
         });

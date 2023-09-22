@@ -115,16 +115,16 @@ public class CarsRectangle {
         this.yOfCar6 += 2;
     }
 
-    public void runDownFaster() {
-
-        this.yOfCar1 += 3;
-        this.yOfCar2 += 3;
-        this.yOfCar3 += 3;
-        this.yOfCar4 += 3;
-        this.yOfCar5 += 3;
-        this.yOfCar6 += 3;
-
-    }
+//    public void runDownFaster() {
+//
+//        this.yOfCar1 += 3;
+//        this.yOfCar2 += 3;
+//        this.yOfCar3 += 3;
+//        this.yOfCar4 += 3;
+//        this.yOfCar5 += 3;
+//        this.yOfCar6 += 3;
+//
+//    }
 
     public void setYOfCar1(int yOfCar1) {
         this.yOfCar1 = yOfCar1;
