@@ -57,6 +57,13 @@ public class OptionsScreen extends JPanel {
         return gameScene;
     }
 
+//    public static void checkButton() {
+//        if (gameScene.getModel().isPressed()){
+//
+//        }
+//
+//    }
+
     public static JButton getInstructions() {
         return Instructions;
     }

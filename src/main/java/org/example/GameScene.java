@@ -184,15 +184,18 @@ public class GameScene extends JPanel implements KeyListener {
                     }
                     this.carPlayer.move(dx);
 
-                    if (this.counter <= 20) {
+                    if (this.counter <= 15) {
                         Thread.sleep(4);
-                    } else if (this.counter > 20 && this.counter <= 45 ){
+                    } else if (this.counter > 15 && this.counter <= 45 ){
                         Thread.sleep(3);
-                    } else if (this.counter > 45 && this.counter <=60 ) {
+                    } else if (this.counter >= 45
+//                            && this.counter <=70
+                    ) {
                         Thread.sleep(2);
-                    } else if (this.counter > 50) {
-                        Thread.sleep(1);
                     }
+//                    else if (this.counter > 70) {
+//                        Thread.sleep(1);
+//                    }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

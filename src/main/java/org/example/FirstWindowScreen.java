@@ -1,5 +1,8 @@
 package org.example;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,11 +18,20 @@ public class FirstWindowScreen extends JPanel {
     private final BufferedImage background;
     private final int xOfBackground = 0;
     private final int yOfBackground = 0;
+    private OptionsScreen optionsScreen;
+    private AudioInputStream audioInputStream;
+    private Clip clip;
+
 
 
     public FirstWindowScreen(){
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
+        this.optionsScreen = new OptionsScreen();
+        playAudio();
+
+
+
 
 
         try {
@@ -64,4 +76,25 @@ public class FirstWindowScreen extends JPanel {
     public static JButton getButtonOfEnter() {
         return buttonOfEnter;
     }
+
+    public void playAudio() {
+        try {
+            this.audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\backgroundmusic-wav.wav").getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+        } catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+        this.clip.start();
+
+//        JOptionPane.showMessageDialog(null , "to close");
+//        JOptionPane.showConfirmDialog(null, "to add");
+    }
+
+    public void stopAudio() {
+        this.clip.close();
+    }
+
+
 }

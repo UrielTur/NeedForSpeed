@@ -1,6 +1,11 @@
 package org.example;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 
 public class Window extends JFrame {
@@ -77,6 +82,7 @@ public class Window extends JFrame {
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
             this.instructionsScreen.setVisible(false);
+            this.firstWindowScreen.stopAudio();
             this.gameOverScreen.setVisible(true);
             this.gameScene.setVisible(true);
             this.gameScene.mainGameLoop();
@@ -106,5 +112,8 @@ public class Window extends JFrame {
     public static int getWINDOW_HEIGHT() {
         return WINDOW_HEIGHT;
     }
+
+
+
 
 }
