@@ -27,8 +27,10 @@ public class GameScene extends JPanel implements KeyListener {
     private final Random random6;
     private final GameOverScreen gameOverScreen;
     private int counter = 0;
-    private AudioInputStream audioInputStream;
-    private Clip clip;
+    private AudioInputStream audioInputStream1;
+    private Clip clip1;
+    private AudioInputStream audioInputStream2;
+    private Clip clip2;
 
 
 
@@ -192,17 +194,18 @@ public class GameScene extends JPanel implements KeyListener {
                     this.carPlayer.move(dx);
 
                     if (this.counter <= 15) {
-                        Thread.sleep(4);
-                    } else if (this.counter > 15 && this.counter <= 45 ){
-                        Thread.sleep(3);
-                    } else if (this.counter >= 45
-//                            && this.counter <=70
+                        Thread.sleep(6);
+                    } else if (this.counter > 15 && this.counter <= 35 ){
+                        Thread.sleep(5);
+                    } else if (this.counter > 35  && this.counter <=60
                     ) {
+                        Thread.sleep(4);
+                    }
+                    else if (this.counter > 60 && this.counter <=80) {
+                        Thread.sleep(3);
+                    } else if (this.counter > 80){
                         Thread.sleep(2);
                     }
-//                    else if (this.counter > 70) {
-//                        Thread.sleep(1);
-//                    }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -214,6 +217,7 @@ public class GameScene extends JPanel implements KeyListener {
         boolean collision = false;
         if (carsRectangle.catchTheCar1().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar2().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar3().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar4().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar5().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar6().intersects(this.carPlayer.calculateRectangle())) {
             collision = true;
+            playAccident();
             stopAudio();
         }
 
@@ -231,23 +235,36 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void playAudio() {
         try {
-            this.audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\CarAcceleration.wav").getAbsoluteFile());
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
+            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\CarAcceleration.wav").getAbsoluteFile());
+            clip1 = AudioSystem.getClip();
+            clip1.open(audioInputStream1);
         } catch(Exception ex){
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
-            this.clip.start();
-            this.clip.loop(Clip.LOOP_CONTINUOUSLY); // זה ישמע את הקליפ באופן תמידי
+            this.clip1.start();
+            this.clip1.loop(Clip.LOOP_CONTINUOUSLY); // זה ישמע את הקליפ באופן תמידי
 
-//        JOptionPane.showMessageDialog(null , "to close");
-//        JOptionPane.showConfirmDialog(null, "to add");
     }
 
     public void stopAudio() {
-        this.clip.close();
+        this.clip1.close();
     }
+
+
+    public void playAccident() {
+        try {
+            this.audioInputStream2 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\crashSounds.wav").getAbsoluteFile());
+            clip2 = AudioSystem.getClip();
+            clip2.open(audioInputStream2);
+        } catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+        this.clip2.start();
+    }
+
+
 
 
 
