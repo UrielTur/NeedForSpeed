@@ -1,9 +1,13 @@
 package org.example;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.util.Random;
 
 public class GameScene extends JPanel implements KeyListener {
@@ -23,6 +27,8 @@ public class GameScene extends JPanel implements KeyListener {
     private final Random random6;
     private final GameOverScreen gameOverScreen;
     private int counter = 0;
+    private AudioInputStream audioInputStream;
+    private Clip clip;
 
 
 
@@ -46,6 +52,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.gameOverScreen = new GameOverScreen();
         this.gameOverScreen.setVisible(true);
         this.add(gameOverScreen);
+
 
 
 
@@ -207,6 +214,7 @@ public class GameScene extends JPanel implements KeyListener {
         boolean collision = false;
         if (carsRectangle.catchTheCar1().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar2().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar3().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar4().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar5().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar6().intersects(this.carPlayer.calculateRectangle())) {
             collision = true;
+            stopAudio();
         }
 
         return collision;
@@ -217,6 +225,28 @@ public class GameScene extends JPanel implements KeyListener {
         if (carPlayer.getX() < roadSigns1.getLeftRedWhite1().getIconWidth() || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getIconWidth() - carPlayer.getCarImageWidth()) || carPlayer.getX() < roadSigns1.getLeftRedWhite2().getIconWidth() || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getIconWidth() - carPlayer.getCarImageWidth())) {
             carPlayer.stopRun();
         }
+    }
+
+
+
+    public void playAudio() {
+        try {
+            this.audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\CarAcceleration.wav").getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+        } catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+            this.clip.start();
+            this.clip.loop(Clip.LOOP_CONTINUOUSLY); // זה ישמע את הקליפ באופן תמידי
+
+//        JOptionPane.showMessageDialog(null , "to close");
+//        JOptionPane.showConfirmDialog(null, "to add");
+    }
+
+    public void stopAudio() {
+        this.clip.close();
     }
 
 

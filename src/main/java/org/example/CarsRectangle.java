@@ -20,11 +20,11 @@ public class CarsRectangle {
     private int yOfCar5;
     private int yOfCar6;
 
-    private final int xOfCar1 = 330;
-    private final int xOfCar2 = 100;
-    private final int xOfCar3 = 550;
-    private final int xOfCar4 = 100;
-    private final int xOfCar5 = 330;
+    private final int xOfCar1 = 310;
+    private final int xOfCar2 = 85;
+    private final int xOfCar3 = 310;
+    private final int xOfCar4 = 85;
+    private final int xOfCar5 = 310;
     private final int xOfCar6 = 550;
 
 
@@ -103,16 +103,16 @@ public class CarsRectangle {
     }
 
     public void runDown1() {
-        this.yOfCar1 += 1;
+        this.yOfCar1 += 2;
         this.yOfCar2 += 1;
-        this.yOfCar3 += 1;
+        this.yOfCar3 += 2;
 
     }
 
     public void runDown2(){
         this.yOfCar4 += 1;
-        this.yOfCar5 += 1;
-        this.yOfCar6 += 1;
+        this.yOfCar5 += 2;
+        this.yOfCar6 += 2;
     }
 
 //    public void runDownFaster() {

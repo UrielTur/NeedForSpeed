@@ -41,6 +41,7 @@ public class Window extends JFrame {
 
         this.instructionsScreen = new InstructionsScreen();
         this.add(instructionsScreen);
+        this.instructionsScreen.setVisible(false);
 
         this.gameScene = new GameScene(this);
         this.add(gameScene);
@@ -83,6 +84,7 @@ public class Window extends JFrame {
             this.optionsScreen.setVisible(false);
             this.instructionsScreen.setVisible(false);
             this.firstWindowScreen.stopAudio();
+            this.gameScene.playAudio();
             this.gameOverScreen.setVisible(true);
             this.gameScene.setVisible(true);
             this.gameScene.mainGameLoop();
