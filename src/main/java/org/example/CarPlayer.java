@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,6 +31,31 @@ public class CarPlayer {
     public CarPlayer(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+
+    public static void getColorCar(JButton jButton) {
+        if (jButton.getBackground().equals(Color.red)) {
+            try {
+                carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\LightRedCar-removebg-min.png"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (jButton.getBackground().equals(Color.green)) {
+            try {
+                carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (jButton.getBackground().equals(Color.blue)) {
+            try {
+                carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\BlueCar-removebg-min.png"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
     }
 
 
@@ -77,4 +103,7 @@ public class CarPlayer {
     public int getCarImageWidth() {
         return carImage.getWidth();
     }
+
+
+
 }

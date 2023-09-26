@@ -1,11 +1,6 @@
 package org.example;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.URL;
+
 
 
 public class Window extends JFrame {
@@ -17,6 +12,7 @@ public class Window extends JFrame {
     private final OptionsScreen optionsScreen;
     private final GameScene gameScene;
     private final InstructionsScreen instructionsScreen;
+    private final Garage garage;
     private final GameOverScreen gameOverScreen;
 
 
@@ -43,6 +39,12 @@ public class Window extends JFrame {
         this.add(instructionsScreen);
         this.instructionsScreen.setVisible(false);
 
+
+        this.garage = new Garage();
+        this.add(garage);
+        this.garage.setVisible(false);
+
+
         this.gameScene = new GameScene(this);
         this.add(gameScene);
         this.gameScene.setVisible(false);
@@ -57,6 +59,7 @@ public class Window extends JFrame {
 
 
         FirstWindowScreen.getButtonOfEnter().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
             optionsScreen.setVisible(true);
             firstWindowScreen.setVisible(false);
             gameOverScreen.setVisible(false);
@@ -64,6 +67,7 @@ public class Window extends JFrame {
 
 
         OptionsScreen.getInstructions().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
             this.instructionsScreen.setVisible(true);
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
@@ -72,29 +76,53 @@ public class Window extends JFrame {
         });
 
 
+
         InstructionsScreen.getBackButton().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
             this.instructionsScreen.setVisible(false);
             this.optionsScreen.setVisible(true);
             this.gameOverScreen.setVisible(false);
         });
 
 
+        OptionsScreen.getGarage().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
+            this.garage.setVisible(true);
+            this.instructionsScreen.setVisible(false);
+            this.firstWindowScreen.setVisible(false);
+            this.optionsScreen.setVisible(false);
+            this.gameScene.setVisible(false);
+            this.gameOverScreen.setVisible(false);
+        });
+
+        Garage.getBackButton().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
+            this.garage.setVisible(false);
+            this.optionsScreen.setVisible(true);
+            this.gameOverScreen.setVisible(false);
+        });
+
+
         OptionsScreen.getGameScene().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
             this.instructionsScreen.setVisible(false);
             this.firstWindowScreen.stopAudio();
-            this.gameScene.playAudio();
+            this.gameScene.playEngineAudio();
             this.gameOverScreen.setVisible(true);
             this.gameScene.setVisible(true);
             this.gameScene.mainGameLoop();
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
 
+
+
         });
 
 
         GameOverScreen.getCloseOption().addActionListener(e -> {
+            firstWindowScreen.playClickAudio();
             System.exit(0);
         });
 

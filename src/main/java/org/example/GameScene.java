@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -7,7 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 public class GameScene extends JPanel implements KeyListener {
@@ -31,6 +34,10 @@ public class GameScene extends JPanel implements KeyListener {
     private Clip clip1;
     private AudioInputStream audioInputStream2;
     private Clip clip2;
+    private JButton pauseGame;
+
+
+//    private BufferedImage pauseLogo;
 
 
 
@@ -56,13 +63,19 @@ public class GameScene extends JPanel implements KeyListener {
         this.add(gameOverScreen);
 
 
-
-
         mainWindow.add(gameOverScreen);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(this);
+
+
+        pauseGame = new JButton("Pause");
+        pauseGame.setBounds(Window.getWINDOW_WIDTH() - 55, 10, 60, 20); // מגדיר מיקום וגודל לכפתור
+        pauseGame.setFont(new Font("Arial" , Font.BOLD , 7));
+        add(pauseGame);
+
+
 
 
     }
@@ -111,10 +124,6 @@ public class GameScene extends JPanel implements KeyListener {
                     this.carsRectangle.runDown2();
                 }
 
-//                }else {
-//                    this.carsRectangle.runDownFaster();
-//
-//                }
 
                 updatePlayer();
 
@@ -181,6 +190,11 @@ public class GameScene extends JPanel implements KeyListener {
                     break;
                 }
 
+                if (pauseGame.getModel().isPressed()){
+                    stopEngineAudio();
+                    break;
+                }
+
 
                 long dx = 0;
                 try {
@@ -218,7 +232,7 @@ public class GameScene extends JPanel implements KeyListener {
         if (carsRectangle.catchTheCar1().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar2().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar3().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar4().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar5().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar6().intersects(this.carPlayer.calculateRectangle())) {
             collision = true;
             playAccident();
-            stopAudio();
+            closeEngineAudio();
         }
 
         return collision;
@@ -233,7 +247,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-    public void playAudio() {
+    public void playEngineAudio() {
         try {
             this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\CarAcceleration.wav").getAbsoluteFile());
             clip1 = AudioSystem.getClip();
@@ -247,8 +261,16 @@ public class GameScene extends JPanel implements KeyListener {
 
     }
 
-    public void stopAudio() {
+    public void closeEngineAudio() {
         this.clip1.close();
+    }
+
+    public void stopEngineAudio() {
+        this.clip1.stop();
+    }
+
+    public void continueEngineAudio() {
+        this.clip1.notify();
     }
 
 
@@ -263,8 +285,6 @@ public class GameScene extends JPanel implements KeyListener {
         }
         this.clip2.start();
     }
-
-
 
 
 

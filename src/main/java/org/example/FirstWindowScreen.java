@@ -19,8 +19,10 @@ public class FirstWindowScreen extends JPanel {
     private final int xOfBackground = 0;
     private final int yOfBackground = 0;
     private OptionsScreen optionsScreen;
-    private AudioInputStream audioInputStream;
-    private Clip clip;
+    private AudioInputStream audioInputStream1;
+    private Clip clip1;
+    private static AudioInputStream audioInputStream2;
+    private static Clip clip2;
 
 
 
@@ -28,7 +30,7 @@ public class FirstWindowScreen extends JPanel {
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
         this.optionsScreen = new OptionsScreen();
-        playAudio();
+        playBackgroundAudio();
 
 
 
@@ -77,23 +79,37 @@ public class FirstWindowScreen extends JPanel {
         return buttonOfEnter;
     }
 
-    public void playAudio() {
+    public void playBackgroundAudio() {
         try {
-            this.audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\backgroundmusic-wav.wav").getAbsoluteFile());
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
+            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\backgroundmusic-wav.wav").getAbsoluteFile());
+            clip1 = AudioSystem.getClip();
+            clip1.open(audioInputStream1);
         } catch(Exception ex){
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
-        this.clip.start();
+        this.clip1.start();
 
 //        JOptionPane.showMessageDialog(null , "to close");
 //        JOptionPane.showConfirmDialog(null, "to add");
     }
 
     public void stopAudio() {
-        this.clip.close();
+        this.clip1.close();
+    }
+
+
+    public static void playClickAudio() {
+        try {
+            audioInputStream2 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\clickSound.wav").getAbsoluteFile());
+            clip2 = AudioSystem.getClip();
+            clip2.open(audioInputStream2);
+        } catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+        clip2.start();
+
     }
 
 
