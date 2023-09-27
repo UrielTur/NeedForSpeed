@@ -7,14 +7,14 @@ public class RoadSigns {
     private final int xOfLine1;
     private final int xOfLine2;
     private int yOfLines;
-    private final ImageIcon asphaltImage1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road-min.png");
-    private final ImageIcon asphaltImage2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\asphalt-road-min.png");
+    private final ImageIcon asphaltImage1 = new ImageIcon("src/main/java/org/example/ImageIcon/asphalt-road-min.png");
+    private final ImageIcon asphaltImage2 = new ImageIcon("src/main/java/org/example/ImageIcon/asphalt-road-min.png");
 
 
-    private final ImageIcon leftRedWhite1 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
-    private final ImageIcon leftRedWhite2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
-    private final ImageIcon rightRedWhite1  = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
-    private final ImageIcon rightRedWhite2 = new ImageIcon("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\WhiteRedSideWalk.png");
+    private final ImageIcon leftRedWhite1 = new ImageIcon("src/main/java/org/example/ImageIcon/WhiteRedSideWalk.png");
+    private final ImageIcon leftRedWhite2 = new ImageIcon("src/main/java/org/example/ImageIcon/WhiteRedSideWalk.png");
+    private final ImageIcon rightRedWhite1  = new ImageIcon("src/main/java/org/example/ImageIcon/WhiteRedSideWalk.png");
+    private final ImageIcon rightRedWhite2 = new ImageIcon("src/main/java/org/example/ImageIcon/WhiteRedSideWalk.png");
 
     private int yOfRedWhite1 = 0;
     private int yOfRedWhite2 = this.yOfRedWhite1 - this.leftRedWhite1.getIconHeight();

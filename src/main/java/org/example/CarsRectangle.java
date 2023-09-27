@@ -49,12 +49,12 @@ public class CarsRectangle {
 
 
         try {
-            carImage1 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\BlueCar-removebg-min.png"));
-            carImage2 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\LightRedCar-removebg-min.png"));
-            carImage3 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\RedBus-removebg-min.png"));
-            carImage4 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\PurpleCar.png"));
-            carImage5 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\OpenCar.png"));
-            carImage6 = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\BlueCar-removebg-min.png"));
+            carImage1 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png"));
+            carImage2 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/LightRedCar-removebg-min.png"));
+            carImage3 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png"));
+            carImage4 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/PurpleCar.png"));
+            carImage5 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/OpenCar.png"));
+            carImage6 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

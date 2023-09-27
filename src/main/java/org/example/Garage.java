@@ -26,7 +26,7 @@ public class Garage extends JPanel {
         setLayout(null);
 
         try {
-            this.garageBackground = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\carGarageBackground.png"));
+            this.garageBackground = ImageIO.read(new File("src/main/java/org/example/ImageIcon/carGarageBackground.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -37,7 +37,7 @@ public class FirstWindowScreen extends JPanel {
 
 
         try {
-            this.background = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\needforspeedbackground-min.png"));
+            this.background = ImageIO.read(new File("src/main/java/org/example/ImageIcon/needforspeedbackground-min.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -81,7 +81,7 @@ public class FirstWindowScreen extends JPanel {
 
     public void playBackgroundAudio() {
         try {
-            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\backgroundmusic-wav.wav").getAbsoluteFile());
+            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/backgroundmusic-wav.wav").getAbsoluteFile());
             clip1 = AudioSystem.getClip();
             clip1.open(audioInputStream1);
         } catch(Exception ex){
@@ -101,7 +101,7 @@ public class FirstWindowScreen extends JPanel {
 
     public static void playClickAudio() {
         try {
-            audioInputStream2 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\clickSound.wav").getAbsoluteFile());
+            audioInputStream2 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/clickSound.wav").getAbsoluteFile());
             clip2 = AudioSystem.getClip();
             clip2.open(audioInputStream2);
         } catch(Exception ex){

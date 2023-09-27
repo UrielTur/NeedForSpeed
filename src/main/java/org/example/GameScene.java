@@ -34,7 +34,9 @@ public class GameScene extends JPanel implements KeyListener {
     private Clip clip1;
     private AudioInputStream audioInputStream2;
     private Clip clip2;
-    private JButton pauseGame;
+    private PauseScreen pauseScreen;
+    private static JButton pauseGame;
+
 
 
 //    private BufferedImage pauseLogo;
@@ -61,6 +63,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.gameOverScreen = new GameOverScreen();
         this.gameOverScreen.setVisible(true);
         this.add(gameOverScreen);
+        this.pauseScreen = new PauseScreen();
 
 
         mainWindow.add(gameOverScreen);
@@ -74,7 +77,32 @@ public class GameScene extends JPanel implements KeyListener {
         pauseGame.setBounds(Window.getWINDOW_WIDTH() - 55, 10, 60, 20); // מגדיר מיקום וגודל לכפתור
         pauseGame.setFont(new Font("Arial" , Font.BOLD , 7));
         add(pauseGame);
-
+//
+//
+//        this.continueGame = new JButton("Continue");
+//        this.continueGame.setBounds(400, 100, 60, 20); // מגדיר מיקום וגודל לכפתור
+//        this.continueGame.setFont(new Font("Arial" , Font.BOLD , 15));
+//        this.continueGame.addActionListener(e -> {
+//
+//        });
+//        add(this.continueGame);
+//        this.continueGame.setVisible(false);
+//
+//
+//
+//        this.exitGame = new JButton("exit");
+//        this.exitGame.setBounds(250, 100, 60, 20); // מגדיר מיקום וגודל לכפתור
+//        this.exitGame.setFont(new Font("Arial" , Font.BOLD , 15));
+//        this.exitGame.addActionListener(e -> {
+//
+//        });
+//        add(this.exitGame);
+//        this.exitGame.setVisible(false);
+//
+//        if (pauseGame.getModel().isPressed()){
+//            this.continueGame.setVisible(true);
+//            this.continueGame.setVisible(true);
+//        }
 
 
 
@@ -187,12 +215,13 @@ public class GameScene extends JPanel implements KeyListener {
                     this.gameOverScreen.setVisible(true);
                     this.gameOverScreen.setCloseOptionVisible();
                     setVisible(false);
-                    break;
+
                 }
 
                 if (pauseGame.getModel().isPressed()){
                     stopEngineAudio();
-                    break;
+
+
                 }
 
 
@@ -249,7 +278,7 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void playEngineAudio() {
         try {
-            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\CarAcceleration.wav").getAbsoluteFile());
+            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/CarAcceleration.wav").getAbsoluteFile());
             clip1 = AudioSystem.getClip();
             clip1.open(audioInputStream1);
         } catch(Exception ex){
@@ -276,7 +305,7 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void playAccident() {
         try {
-            this.audioInputStream2 = AudioSystem.getAudioInputStream(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\FilesOfWav\\crashSounds.wav").getAbsoluteFile());
+            this.audioInputStream2 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/crashSounds.wav").getAbsoluteFile());
             clip2 = AudioSystem.getClip();
             clip2.open(audioInputStream2);
         } catch(Exception ex){
@@ -286,7 +315,9 @@ public class GameScene extends JPanel implements KeyListener {
         this.clip2.start();
     }
 
-
+    public static JButton getPauseGame() {
+        return pauseGame;
+    }
 
     public void keyTyped(KeyEvent e) {
 

@@ -27,7 +27,7 @@ public class OptionsScreen extends JPanel {
 
 
         try {
-            this.background = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\optionScreen-min.png"));
+            this.background = ImageIO.read(new File("src/main/java/org/example/ImageIcon/optionScreen-min.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

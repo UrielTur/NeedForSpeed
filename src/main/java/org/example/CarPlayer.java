@@ -17,7 +17,7 @@ public class CarPlayer {
 
     static {
         try {
-            carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
+            carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/CarGameStraight-min.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -37,19 +37,19 @@ public class CarPlayer {
     public static void getColorCar(JButton jButton) {
         if (jButton.getBackground().equals(Color.red)) {
             try {
-                carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\LightRedCar-removebg-min.png"));
+                carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/LightRedCar-removebg-min.png"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else if (jButton.getBackground().equals(Color.green)) {
             try {
-                carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\CarGameStraight-min.png"));
+                carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/CarGameStraight-min.png"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else if (jButton.getBackground().equals(Color.blue)) {
             try {
-                carImage = ImageIO.read(new File("C:\\Users\\USER\\IdeaProjects\\SportAPI\\src\\main\\java\\org\\example\\ImageIcon\\BlueCar-removebg-min.png"));
+                carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -14,6 +14,7 @@ public class Window extends JFrame {
     private final InstructionsScreen instructionsScreen;
     private final Garage garage;
     private final GameOverScreen gameOverScreen;
+    private final PauseScreen pauseScreen;
 
 
 
@@ -55,6 +56,11 @@ public class Window extends JFrame {
         this.gameOverScreen.setVisible(false);
 
 
+        this.pauseScreen = new PauseScreen();
+        this.add(pauseScreen);
+        this.pauseScreen.setVisible(false);
+
+
 
 
 
@@ -78,7 +84,7 @@ public class Window extends JFrame {
 
 
         InstructionsScreen.getBackButton().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             this.instructionsScreen.setVisible(false);
             this.optionsScreen.setVisible(true);
             this.gameOverScreen.setVisible(false);
@@ -86,7 +92,7 @@ public class Window extends JFrame {
 
 
         OptionsScreen.getGarage().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             this.garage.setVisible(true);
             this.instructionsScreen.setVisible(false);
             this.firstWindowScreen.setVisible(false);
@@ -96,7 +102,7 @@ public class Window extends JFrame {
         });
 
         Garage.getBackButton().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             this.garage.setVisible(false);
             this.optionsScreen.setVisible(true);
             this.gameOverScreen.setVisible(false);
@@ -104,7 +110,7 @@ public class Window extends JFrame {
 
 
         OptionsScreen.getGameScene().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
             this.instructionsScreen.setVisible(false);
@@ -116,15 +122,24 @@ public class Window extends JFrame {
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
 
-
-
         });
-
 
         GameOverScreen.getCloseOption().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             System.exit(0);
         });
+
+        GameScene.getPauseGame().addActionListener(e -> {
+            this.gameScene.setVisible(false);
+            this.pauseScreen.setVisible(true);
+        });
+
+        PauseScreen.getContinueGame().addActionListener(e -> {
+            this.gameScene.setVisible(true);
+            this.pauseScreen.setVisible(false);
+            this.gameScene.playEngineAudio();
+        });
+
 
 
 
