@@ -14,7 +14,7 @@ public class Window extends JFrame {
     private final InstructionsScreen instructionsScreen;
     private final Garage garage;
     private final GameOverScreen gameOverScreen;
-    private final PauseScreen pauseScreen;
+//    private final PauseScreen;
 
 
 
@@ -56,16 +56,16 @@ public class Window extends JFrame {
         this.gameOverScreen.setVisible(false);
 
 
-        this.pauseScreen = new PauseScreen();
-        this.add(pauseScreen);
-        this.pauseScreen.setVisible(false);
+//        this.pauseScreen = new PauseScreen();
+//        this.add(pauseScreen);
+//        this.pauseScreen.setVisible(false);
 
 
 
 
 
         FirstWindowScreen.getButtonOfEnter().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             optionsScreen.setVisible(true);
             firstWindowScreen.setVisible(false);
             gameOverScreen.setVisible(false);
@@ -73,7 +73,7 @@ public class Window extends JFrame {
 
 
         OptionsScreen.getInstructions().addActionListener(e -> {
-            firstWindowScreen.playClickAudio();
+            FirstWindowScreen.playClickAudio();
             this.instructionsScreen.setVisible(true);
             this.firstWindowScreen.setVisible(false);
             this.optionsScreen.setVisible(false);
@@ -129,16 +129,16 @@ public class Window extends JFrame {
             System.exit(0);
         });
 
-        GameScene.getPauseGame().addActionListener(e -> {
-            this.gameScene.setVisible(false);
-            this.pauseScreen.setVisible(true);
-        });
-
-        PauseScreen.getContinueGame().addActionListener(e -> {
-            this.gameScene.setVisible(true);
-            this.pauseScreen.setVisible(false);
-            this.gameScene.playEngineAudio();
-        });
+//        GameScene.getPauseGame().addActionListener(e -> {
+//            this.gameScene.setVisible(false);
+//            this.pauseScreen.setVisible(true);
+//        });
+//
+//        PauseScreen.getContinueGame().addActionListener(e -> {
+//            this.gameScene.setVisible(true);
+//            this.pauseScreen.setVisible(false);
+//            this.gameScene.playEngineAudio();
+//        });
 
 
 

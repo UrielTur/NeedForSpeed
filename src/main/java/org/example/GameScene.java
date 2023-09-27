@@ -34,8 +34,8 @@ public class GameScene extends JPanel implements KeyListener {
     private Clip clip1;
     private AudioInputStream audioInputStream2;
     private Clip clip2;
-    private PauseScreen pauseScreen;
-    private static JButton pauseGame;
+//    private PauseScreen pauseScreen;
+//    private static JButton pauseGame;
 
 
 
@@ -63,7 +63,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.gameOverScreen = new GameOverScreen();
         this.gameOverScreen.setVisible(true);
         this.add(gameOverScreen);
-        this.pauseScreen = new PauseScreen();
+//        this.pauseScreen = new PauseScreen();
 
 
         mainWindow.add(gameOverScreen);
@@ -73,10 +73,10 @@ public class GameScene extends JPanel implements KeyListener {
         this.addKeyListener(this);
 
 
-        pauseGame = new JButton("Pause");
-        pauseGame.setBounds(Window.getWINDOW_WIDTH() - 55, 10, 60, 20); // מגדיר מיקום וגודל לכפתור
-        pauseGame.setFont(new Font("Arial" , Font.BOLD , 7));
-        add(pauseGame);
+//        pauseGame = new JButton("Pause");
+//        pauseGame.setBounds(Window.getWINDOW_WIDTH() - 55, 10, 60, 20); // מגדיר מיקום וגודל לכפתור
+//        pauseGame.setFont(new Font("Arial" , Font.BOLD , 7));
+//        add(pauseGame);
 //
 //
 //        this.continueGame = new JButton("Continue");
@@ -218,11 +218,11 @@ public class GameScene extends JPanel implements KeyListener {
 
                 }
 
-                if (pauseGame.getModel().isPressed()){
-                    stopEngineAudio();
-
-
-                }
+//                if (pauseGame.getModel().isPressed()){
+//                    stopEngineAudio();
+//
+//
+//                }
 
 
                 long dx = 0;
@@ -260,8 +260,8 @@ public class GameScene extends JPanel implements KeyListener {
         boolean collision = false;
         if (carsRectangle.catchTheCar1().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar2().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar3().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar4().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar5().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar6().intersects(this.carPlayer.calculateRectangle())) {
             collision = true;
-            playAccident();
             closeEngineAudio();
+//            playAccident();
         }
 
         return collision;
@@ -315,9 +315,9 @@ public class GameScene extends JPanel implements KeyListener {
         this.clip2.start();
     }
 
-    public static JButton getPauseGame() {
-        return pauseGame;
-    }
+//    public static JButton getPauseGame() {
+//        return pauseGame;
+//    }
 
     public void keyTyped(KeyEvent e) {
 
