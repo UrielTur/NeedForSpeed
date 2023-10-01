@@ -62,7 +62,7 @@ public class CarPlayer {
 
     public void paintCar(Graphics graphics){
         try {
-            int newWidth = 85;
+            int newWidth = 100;
             int newHeight = 125;
 
             Image scaledImage = carImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);

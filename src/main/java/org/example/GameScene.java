@@ -47,10 +47,10 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
-        this.roadSigns1 = new RoadSigns(230, 480 ,10);
-        this.roadSigns2 = new RoadSigns(230,480,this.roadSigns1.getYOfLines()-250);
-        this.roadSigns3 = new RoadSigns(230,480,this.roadSigns2.getYOfLines()-250);
-        this.roadSigns4 = new RoadSigns(230,480,this.roadSigns3.getYOfLines()-250);
+        this.roadSigns1 = new RoadSigns(240, 460 ,10);
+        this.roadSigns2 = new RoadSigns(240,460,this.roadSigns1.getYOfLines()-250);
+        this.roadSigns3 = new RoadSigns(240,460,this.roadSigns2.getYOfLines()-250);
+        this.roadSigns4 = new RoadSigns(240,460,this.roadSigns3.getYOfLines()-250);
         this.carPlayer = new CarPlayer(330, 520);
         this.carsRectangle = new CarsRectangle();
         this.pressedKey = new boolean[2];

@@ -20,12 +20,12 @@ public class CarsRectangle {
     private int yOfCar5;
     private int yOfCar6;
 
-    private final int xOfCar1 = 310;
-    private final int xOfCar2 = 85;
-    private final int xOfCar3 = 310;
-    private final int xOfCar4 = 85;
-    private final int xOfCar5 = 310;
-    private final int xOfCar6 = 550;
+    private final int xOfCar1 = 300;
+    private final int xOfCar2 = 115;
+    private final int xOfCar3 = 280;
+    private final int xOfCar4 = 115;
+    private final int xOfCar5 = 295;
+    private final int xOfCar6 = 475;
 
 
 
@@ -43,9 +43,9 @@ public class CarsRectangle {
         this.yOfCar1 = -(random1.nextInt(50 , 2000));
         this.yOfCar2 = -(random2.nextInt(50 , 2500));
         this.yOfCar3 = -(random3.nextInt(50, 2000));
-        this.yOfCar4 = -(random4.nextInt(1500, 5000));
-        this.yOfCar5 = -(random5.nextInt(1200, 5000));
-        this.yOfCar6 = -(random6.nextInt(1800, 5000));
+        this.yOfCar4 = -(random4.nextInt(800, 4500));
+        this.yOfCar5 = -(random5.nextInt(800, 4500));
+        this.yOfCar6 = -(random6.nextInt(800, 4500));
 
 
         try {
@@ -54,20 +54,20 @@ public class CarsRectangle {
             carImage3 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png"));
             carImage4 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/PurpleCar.png"));
             carImage5 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/OpenCar.png"));
-            carImage6 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png"));
+            carImage6 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     public void paintCarRectangle1(Graphics graphics) {
-        int newWidth = 100;
+        int newWidth = 110;
         int newHeight = 125;
         Image scaledImage1 = carImage1.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage1, this.xOfCar1, this.yOfCar1, null);
     }
 
     public void paintCarRectangle2(Graphics graphics) {
-        int newWidth = 100;
+        int newWidth = 110;
         int newHeight = 125;
         Image scaledImage2 = carImage2.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage2, this.xOfCar2, this.yOfCar2, null);
@@ -75,29 +75,29 @@ public class CarsRectangle {
     }
 
     public void paintCarRectangle3(Graphics graphics) {
-        int newWidth = 110;
-        int newHeight = 200;
+        int newWidth = 160;
+        int newHeight = 235;
         Image scaledImage3 = carImage3.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage3, this.xOfCar3, this.yOfCar3, null);
     }
 
     public void paintCarRectangle4(Graphics graphics) {
-        int newWidth = 90;
+        int newWidth = 100;
         int newHeight = 115;
         Image scaledImage4 = carImage4.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage4, this.xOfCar4, this.yOfCar4, null);
     }
 
     public void paintCarRectangle5(Graphics graphics) {
-        int newWidth = 110;
+        int newWidth = 125;
         int newHeight = 165;
         Image scaledImage5 = carImage5.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage5, this.xOfCar5, this.yOfCar5, null);
     }
 
     public void paintCarRectangle6(Graphics graphics) {
-        int newWidth = 100;
-        int newHeight = 125;
+        int newWidth = 160;
+        int newHeight = 235;
         Image scaledImage6 = carImage6.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage6, this.xOfCar6, this.yOfCar6, null);
     }
@@ -175,25 +175,25 @@ public class CarsRectangle {
 
 
     public Rectangle catchTheCar1() {
-        return new Rectangle (this.xOfCar1, this.yOfCar1 , 50, 50);
+        return new Rectangle (this.xOfCar1, this.yOfCar1 , 105, 95);
     }
 
     public Rectangle catchTheCar2() {
-        return new Rectangle (this.xOfCar2, this.yOfCar2 , 50, 50);
+        return new Rectangle (this.xOfCar2, this.yOfCar2 , 100, 90);
     }
 
     public Rectangle catchTheCar3() {
-        return new Rectangle (this.xOfCar3, this.yOfCar3 , 50,  50);
+        return new Rectangle (this.xOfCar3 - 15, this.yOfCar3 , 135,  100);
     }
     public Rectangle catchTheCar4() {
-        return new Rectangle (this.xOfCar4, this.yOfCar4 , 50, 50);
+        return new Rectangle (this.xOfCar4, this.yOfCar4 , 95, 85);
     }
 
     public Rectangle catchTheCar5() {
-        return new Rectangle (this.xOfCar5, this.yOfCar5 , 50, 50);
+        return new Rectangle (this.xOfCar5, this.yOfCar5 , 100, 95);
     }
 
     public Rectangle catchTheCar6() {
-        return new Rectangle (this.xOfCar6, this.yOfCar6 , 50,  50);
+        return new Rectangle (this.xOfCar6 - 15, this.yOfCar6 , 135,  100);
     }
 }
