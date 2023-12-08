@@ -1,19 +1,25 @@
 package org.example;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class GameOverScreen extends JPanel{
 
     private final JLabel textOfWelcome;
     private static JButton closeOption;
+    private AudioInputStream audioInputStream2;
+    private Clip clip2;
 
     private final Color myColor =  new Color(190 , 0 , 0);
 
 
 
     public GameOverScreen() {
-        setLayout(null); // מבטל את הפרישה האוטומטית של מיקום הרכיבים בפאנל
+        setLayout(null);
         setPreferredSize(new Dimension(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT())); // מגדיר גודל רצוי לפאנל
         this.setBackground(myColor);
 
@@ -40,5 +46,17 @@ public class GameOverScreen extends JPanel{
 
     public void setCloseOptionVisible() {
         closeOption.setVisible(true);
+    }
+
+    public void playAccident() {
+        try {
+            this.audioInputStream2 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/crashSound.wav").getAbsoluteFile());
+            clip2 = AudioSystem.getClip();
+            clip2.open(audioInputStream2);
+        } catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+        this.clip2.start();
     }
 }

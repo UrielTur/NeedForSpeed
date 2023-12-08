@@ -48,7 +48,7 @@ public class Window extends JFrame {
 
         this.gameScene = new GameScene(this);
         this.add(gameScene);
-        this.gameScene.setVisible(false);
+        this.gameScene.setVisible(true);
 
 
         this.gameOverScreen = new GameOverScreen();
@@ -129,6 +129,7 @@ public class Window extends JFrame {
             System.exit(0);
         });
 
+
 //        GameScene.getPauseGame().addActionListener(e -> {
 //            this.gameScene.setVisible(false);
 //            this.pauseScreen.setVisible(true);
@@ -144,6 +145,7 @@ public class Window extends JFrame {
 
 
     }
+
 
 
     public void showWindow() {

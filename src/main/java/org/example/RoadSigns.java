@@ -21,7 +21,6 @@ public class RoadSigns {
     private final int xOfBackground = 0;
     private int yOfBackground1 = 0;
     private int yOfBackground2 = this.yOfBackground1 - this.asphaltImage1.getIconHeight();
-//    private int counter = 0;
 
 
 

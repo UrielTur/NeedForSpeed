@@ -103,9 +103,9 @@ public class CarsRectangle {
     }
 
     public void runDown1() {
-        this.yOfCar1 += 2;
-        this.yOfCar2 += 1;
-        this.yOfCar3 += 2;
+            this.yOfCar1 += 2;
+            this.yOfCar2 += 1;
+            this.yOfCar3 += 2;
 
     }
 
@@ -113,6 +113,18 @@ public class CarsRectangle {
         this.yOfCar4 += 1;
         this.yOfCar5 += 2;
         this.yOfCar6 += 2;
+    }
+
+    public void stop1(){
+        this.yOfCar1 -=3;
+    }
+
+    public void stop2(){
+        this.yOfCar2 -=4;
+    }
+
+    public void stop4(){
+        this.yOfCar5 -=3;
     }
 
 //    public void runDownFaster() {
@@ -196,4 +208,13 @@ public class CarsRectangle {
     public Rectangle catchTheCar6() {
         return new Rectangle (this.xOfCar6 - 15, this.yOfCar6 , 135,  100);
     }
+
+
+
+
+
+
+
+
+
 }

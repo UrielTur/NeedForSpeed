@@ -32,8 +32,7 @@ public class GameScene extends JPanel implements KeyListener {
     private int counter = 0;
     private AudioInputStream audioInputStream1;
     private Clip clip1;
-    private AudioInputStream audioInputStream2;
-    private Clip clip2;
+
 //    private PauseScreen pauseScreen;
 //    private static JButton pauseGame;
 
@@ -71,6 +70,8 @@ public class GameScene extends JPanel implements KeyListener {
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(this);
+
+
 
 
 //        pauseGame = new JButton("Pause");
@@ -134,6 +135,8 @@ public class GameScene extends JPanel implements KeyListener {
             while (true) {
 
                 repaint();
+                safetyDistance();
+
                 if (this.counter <= 40) {
                     this.roadSigns1.runDown();
                     this.roadSigns2.runDown();
@@ -260,11 +263,25 @@ public class GameScene extends JPanel implements KeyListener {
         boolean collision = false;
         if (carsRectangle.catchTheCar1().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar2().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar3().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar4().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar5().intersects(this.carPlayer.calculateRectangle()) || carsRectangle.catchTheCar6().intersects(this.carPlayer.calculateRectangle())) {
             collision = true;
-            closeEngineAudio();
+            stopEngineAudio();
 //            playAccident();
         }
 
         return collision;
+    }
+
+
+    public void safetyDistance(){
+        if (carsRectangle.catchTheCar1().intersects(carsRectangle.catchTheCar5()) || carsRectangle.catchTheCar1().intersects(carsRectangle.catchTheCar3())){
+            carsRectangle.stop1();
+        }
+        if (carsRectangle.catchTheCar2().intersects(carsRectangle.catchTheCar4())){
+            carsRectangle.stop2();
+        }
+        if (carsRectangle.catchTheCar3().intersects(carsRectangle.catchTheCar5())) {
+            carsRectangle.stop4();
+        }
+
     }
 
 
@@ -303,17 +320,9 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
 
-    public void playAccident() {
-        try {
-            this.audioInputStream2 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/crashSounds.wav").getAbsoluteFile());
-            clip2 = AudioSystem.getClip();
-            clip2.open(audioInputStream2);
-        } catch(Exception ex){
-            System.out.println("Error with playing sound.");
-            ex.printStackTrace();
-        }
-        this.clip2.start();
-    }
+
+
+
 
 //    public static JButton getPauseGame() {
 //        return pauseGame;
@@ -339,6 +348,7 @@ public class GameScene extends JPanel implements KeyListener {
         }
 
     }
+
 
 
 
