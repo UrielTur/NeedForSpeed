@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -8,9 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.Random;
 
 public class GameScene extends JPanel implements KeyListener {
@@ -35,10 +32,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 //    private PauseScreen pauseScreen;
 //    private static JButton pauseGame;
-
-
-
-//    private BufferedImage pauseLogo;
 
 
 
@@ -135,7 +128,7 @@ public class GameScene extends JPanel implements KeyListener {
             while (true) {
 
                 repaint();
-                safetyDistance();
+
 
                 if (this.counter <= 40) {
                     this.roadSigns1.runDown();
@@ -156,7 +149,7 @@ public class GameScene extends JPanel implements KeyListener {
                 }
 
 
-                updatePlayer();
+
 
 
                 if (this.roadSigns1.getyOfBackground1() >= Window.getWINDOW_HEIGHT()){
@@ -221,6 +214,10 @@ public class GameScene extends JPanel implements KeyListener {
 
                 }
 
+
+                updatePlayer();
+                safetyDistance();
+
 //                if (pauseGame.getModel().isPressed()){
 //                    stopEngineAudio();
 //
@@ -240,17 +237,17 @@ public class GameScene extends JPanel implements KeyListener {
                     this.carPlayer.move(dx);
 
                     if (this.counter <= 15) {
-                        Thread.sleep(6);
+                        Thread.sleep(8);
                     } else if (this.counter > 15 && this.counter <= 35 ){
-                        Thread.sleep(5);
+                        Thread.sleep(7);
                     } else if (this.counter > 35  && this.counter <=60
                     ) {
-                        Thread.sleep(4);
+                        Thread.sleep(6);
                     }
                     else if (this.counter > 60 && this.counter <=80) {
-                        Thread.sleep(3);
+                        Thread.sleep(5);
                     } else if (this.counter > 80){
-                        Thread.sleep(2);
+                        Thread.sleep(4);
                     }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -286,7 +283,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void updatePlayer() {
-        if (carPlayer.getX() < roadSigns1.getLeftRedWhite1().getIconWidth() || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getIconWidth() - carPlayer.getCarImageWidth()) || carPlayer.getX() < roadSigns1.getLeftRedWhite2().getIconWidth() || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getIconWidth() - carPlayer.getCarImageWidth())) {
+        if (carPlayer.getX() < roadSigns1.getLeftRedWhite1().getWidth(null) || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getWidth(null) - carPlayer.getCarImageWidth()) || carPlayer.getX() < roadSigns1.getLeftRedWhite2().getWidth(null) || carPlayer.getX() > (roadSigns1.getRightRedWhite1().getWidth(null) - carPlayer.getCarImageWidth())) {
             carPlayer.stopRun();
         }
     }
@@ -295,7 +292,7 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void playEngineAudio() {
         try {
-            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/CarAcceleration.wav").getAbsoluteFile());
+            this.audioInputStream1 = AudioSystem.getAudioInputStream(new File("src/main/java/org/example/FilesOfWav/backgroundGameSound.wav").getAbsoluteFile());
             clip1 = AudioSystem.getClip();
             clip1.open(audioInputStream1);
         } catch(Exception ex){

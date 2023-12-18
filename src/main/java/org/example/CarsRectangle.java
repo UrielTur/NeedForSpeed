@@ -1,18 +1,19 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
 
 public class CarsRectangle {
-    private BufferedImage carImage1;
-    private BufferedImage carImage2;
-    private BufferedImage carImage3;
-    private BufferedImage carImage4;
-    private BufferedImage carImage5;
-    private BufferedImage carImage6;
+    private Image carImage1;
+    private Image carImage2;
+    private Image carImage3;
+    private Image carImage4;
+    private Image carImage5;
+    private Image carImage6;
     private int yOfCar1;
     private int yOfCar2;
     private int yOfCar3;
@@ -48,58 +49,61 @@ public class CarsRectangle {
         this.yOfCar6 = -(random6.nextInt(800, 4500));
 
 
-        try {
-            carImage1 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png"));
-            carImage2 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/LightRedCar-removebg-min.png"));
-            carImage3 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png"));
-            carImage4 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/PurpleCar.png"));
-            carImage5 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/OpenCar.png"));
-            carImage6 = ImageIO.read(new File("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        carImage1 = new ImageIcon("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png").getImage();
+        carImage2 = new ImageIcon("src/main/java/org/example/ImageIcon/LightRedCar-removebg-min.png").getImage();
+        carImage3 = new ImageIcon("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png").getImage();
+        carImage4 = new ImageIcon("src/main/java/org/example/ImageIcon/PurpleCar.png").getImage();
+        carImage5 = new ImageIcon("src/main/java/org/example/ImageIcon/OpenCar.png").getImage();
+        carImage6 = new ImageIcon("src/main/java/org/example/ImageIcon/RedBus-removebg-min.png").getImage();
+
     }
     public void paintCarRectangle1(Graphics graphics) {
         int newWidth = 110;
         int newHeight = 125;
-        Image scaledImage1 = carImage1.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage1, this.xOfCar1, this.yOfCar1, null);
+
+        graphics.drawImage(carImage1, this.xOfCar1, this.yOfCar1,newWidth,newHeight,null);
+
     }
 
     public void paintCarRectangle2(Graphics graphics) {
         int newWidth = 110;
         int newHeight = 125;
-        Image scaledImage2 = carImage2.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage2, this.xOfCar2, this.yOfCar2, null);
+
+        graphics.drawImage(carImage2, this.xOfCar2, this.yOfCar2,newWidth,newHeight,null);
+
 
     }
 
     public void paintCarRectangle3(Graphics graphics) {
         int newWidth = 160;
         int newHeight = 235;
-        Image scaledImage3 = carImage3.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage3, this.xOfCar3, this.yOfCar3, null);
+
+        graphics.drawImage(carImage3, this.xOfCar3, this.yOfCar3,newWidth,newHeight,null);
+
     }
 
     public void paintCarRectangle4(Graphics graphics) {
         int newWidth = 100;
         int newHeight = 115;
-        Image scaledImage4 = carImage4.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage4, this.xOfCar4, this.yOfCar4, null);
+
+        graphics.drawImage(carImage4, this.xOfCar4, this.yOfCar4,newWidth,newHeight,null);
+
     }
 
     public void paintCarRectangle5(Graphics graphics) {
         int newWidth = 125;
         int newHeight = 165;
-        Image scaledImage5 = carImage5.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage5, this.xOfCar5, this.yOfCar5, null);
+
+        graphics.drawImage(carImage5, this.xOfCar5, this.yOfCar5,newWidth,newHeight,null);
+
     }
 
     public void paintCarRectangle6(Graphics graphics) {
         int newWidth = 160;
         int newHeight = 235;
-        Image scaledImage6 = carImage6.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage6, this.xOfCar6, this.yOfCar6, null);
+
+        graphics.drawImage(carImage6, this.xOfCar6, this.yOfCar6,newWidth,newHeight,null);
+
     }
 
     public void runDown1() {

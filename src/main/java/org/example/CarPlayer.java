@@ -1,11 +1,9 @@
 package org.example;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
 
 public class CarPlayer {
 
@@ -13,17 +11,12 @@ public class CarPlayer {
     private final int y;
 
 
-    private static BufferedImage carImage;
+    private static Image carImage = new ImageIcon("src/main/java/org/example/ImageIcon/CarGameStraight-min.png").getImage();
 
-    static {
-        try {
-            carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/CarGameStraight-min.png"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    ;
+
+
+
     private RoadSigns roadSigns = new RoadSigns(0 , 0 , 0);
 
 
@@ -36,23 +29,15 @@ public class CarPlayer {
 
     public static void getColorCar(JButton jButton) {
         if (jButton.getBackground().equals(Color.red)) {
-            try {
-                carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/LightRedCar-removebg-min.png"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+                carImage = new ImageIcon("src/main/java/org/example/ImageIcon/LightRedCar-removebg-min.png").getImage();
+
         } else if (jButton.getBackground().equals(Color.green)) {
-            try {
-                carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/CarGameStraight-min.png"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+                carImage = new ImageIcon("src/main/java/org/example/ImageIcon/CarGameStraight-min.png").getImage();
+
         } else if (jButton.getBackground().equals(Color.blue)) {
-            try {
-                carImage = ImageIO.read(new File("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            carImage = new ImageIcon("src/main/java/org/example/ImageIcon/BlueCar-removebg-min.png").getImage();
         }
 
 
@@ -61,17 +46,14 @@ public class CarPlayer {
 
 
     public void paintCar(Graphics graphics){
-        try {
-            int newWidth = 95;
-            int newHeight = 125;
 
-            Image scaledImage = carImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        int newWidth = 95;
+        int newHeight = 125;
+
+        graphics.drawImage(carImage, (short) this.x, (short) this.y,newWidth,newHeight,null);
 
 
-            graphics.drawImage(scaledImage, this.x, this.y, null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
     }
 
@@ -87,11 +69,11 @@ public class CarPlayer {
 
 
     public void stopRun() {
-        if (this.x < roadSigns.getLeftRedWhite1().getIconWidth()) {
-            this.x = roadSigns.getLeftRedWhite1().getIconWidth();
+        if (this.x < roadSigns.getLeftRedWhite1().getWidth(null)) {
+            this.x = roadSigns.getLeftRedWhite1().getWidth(null);
         }
-        if (this.x > (Window.getWINDOW_WIDTH() - roadSigns.getRightRedWhite1().getIconWidth()) - 85) {
-            this.x = Window.getWINDOW_WIDTH() - roadSigns.getRightRedWhite1().getIconWidth() -85;
+        if (this.x > (Window.getWINDOW_WIDTH() - roadSigns.getRightRedWhite1().getWidth(null)) - 85) {
+            this.x = Window.getWINDOW_WIDTH() - roadSigns.getRightRedWhite1().getWidth(null) -85;
         }
     }
 
@@ -101,7 +83,7 @@ public class CarPlayer {
     }
 
     public int getCarImageWidth() {
-        return carImage.getWidth();
+        return carImage.getWidth(null);
     }
 
 
