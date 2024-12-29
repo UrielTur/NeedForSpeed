@@ -30,6 +30,11 @@ public class GameScene extends JPanel implements KeyListener {
     private AudioInputStream audioInputStream1;
     private Clip clip1;
 
+    private OpenCVProcessor openCVProcessor;
+
+    private long dx;
+
+
 //    private PauseScreen pauseScreen;
 //    private static JButton pauseGame;
 
@@ -56,6 +61,8 @@ public class GameScene extends JPanel implements KeyListener {
         this.gameOverScreen.setVisible(true);
         this.add(gameOverScreen);
 //        this.pauseScreen = new PauseScreen();
+
+//        openCVProcessor = new OpenCVProcessor();
 
 
         mainWindow.add(gameOverScreen);
@@ -120,103 +127,114 @@ public class GameScene extends JPanel implements KeyListener {
         this.carsRectangle.paintCarRectangle6(graphics);
 
 
+        updatePlayerMovementBasedOnMarker();
+
+
     }
 
     public synchronized void mainGameLoop() {
         new Thread(() -> {
 
-            while (true) {
+            boolean isPlay = true;
+            if (isPlay) {
+                while (true) {
 
-                repaint();
-
-
-                if (this.counter <= 40) {
-                    this.roadSigns1.runDown();
-                    this.roadSigns2.runDown();
-                    this.roadSigns3.runDown();
-                    this.roadSigns4.runDown();
-                } else {
-                    this.roadSigns1.runDownDouble();
-                    this.roadSigns2.runDownDouble();
-                    this.roadSigns3.runDownDouble();
-                    this.roadSigns4.runDownDouble();
-                }
+                    repaint();
 
 
-                this.carsRectangle.runDown1();
-                if (this.counter >= 5) {
-                    this.carsRectangle.runDown2();
-                }
+//                    openCVProcessor.processFrame();
+
+                    // כאן ייבדק באיזה שליש נמצא המרקר הצהוב ויתבצע העדכון של תנועת הרכב
+
+
+                    if (this.counter <= 40) {
+                        this.roadSigns1.runDown();
+                        this.roadSigns2.runDown();
+                        this.roadSigns3.runDown();
+                        this.roadSigns4.runDown();
+                    } else {
+                        this.roadSigns1.runDownDouble();
+                        this.roadSigns2.runDownDouble();
+                        this.roadSigns3.runDownDouble();
+                        this.roadSigns4.runDownDouble();
+                    }
+
+
+                    this.carsRectangle.runDown1();
+                    if (this.counter >= 5) {
+                        this.carsRectangle.runDown2();
+                    }
+
+
+                    if (this.roadSigns1.getyOfBackground1() >= Window.getWINDOW_HEIGHT()) {
+                        this.roadSigns1.setyOfBackground1(-(Window.getWINDOW_HEIGHT() - 10));
+                        this.counter++;
+                    }
+                    if (this.roadSigns1.getyOfBackground2() >= Window.getWINDOW_HEIGHT()) {
+                        this.roadSigns1.setyOfBackground2(-(Window.getWINDOW_HEIGHT() - 10));
+                        this.counter++;
+                    }
+
+
+                    if (this.roadSigns1.getYOfLines() >= 750) {
+                        this.roadSigns1.setYOfLines(-250);
+                    }
+                    if (this.roadSigns2.getYOfLines() >= 750) {
+                        this.roadSigns2.setYOfLines(-250);
+                    }
+                    if (this.roadSigns3.getYOfLines() >= 750) {
+                        this.roadSigns3.setYOfLines(-250);
+                    }
+                    if (this.roadSigns4.getYOfLines() >= 750) {
+                        this.roadSigns4.setYOfLines(-250);
+                    }
+
+
+                    if (this.roadSigns1.getyOfRedWhite1() >= (Window.getWINDOW_HEIGHT())) {
+                        this.roadSigns1.setyOfRedWhite1(-(Window.getWINDOW_HEIGHT()));
+                    }
+                    if (this.roadSigns1.getyOfRedWhite2() >= Window.getWINDOW_HEIGHT()) {
+                        this.roadSigns1.setyOfRedWhite2(-(Window.getWINDOW_HEIGHT()));
+                    }
+
+
+                    if (this.carsRectangle.getyOfCar1() >= 800) {
+                        this.carsRectangle.setYOfCar1(-(random1.nextInt(50, 9000)));
+                    }
+                    if (this.carsRectangle.getyOfCar2() >= 800) {
+                        this.carsRectangle.setYOfCar2(-(random2.nextInt(50, 9000)));
+                    }
+                    if (this.carsRectangle.getyOfCar3() >= 800) {
+                        this.carsRectangle.setyOfCar3(-(random3.nextInt(50, 9000)));
+                    }
+                    if (this.carsRectangle.getyOfCar4() >= 800) {
+                        this.carsRectangle.setyOfCar4(-(random4.nextInt(1000, 9000)));
+                    }
+                    if (this.carsRectangle.getyOfCar5() >= 800) {
+                        this.carsRectangle.setyOfCar5(-(random5.nextInt(1000, 9000)));
+                    }
+                    if (this.carsRectangle.getyOfCar6() >= 800) {
+                        this.carsRectangle.setyOfCar6(-(random6.nextInt(1000, 9000)));
+                    }
+
+
+                    boolean hasCollision = collision(this.carsRectangle);
+                    if (hasCollision) {
+                        this.gameOverScreen.setVisible(true);
+                        this.gameOverScreen.setCloseOptionVisible();
+                        setVisible(false);
+                        this.removeAll();
+                        isPlay = false;
+
+                    }
+
+
+                    updatePlayer();
+                    safetyDistance();
 
 
 
 
-
-                if (this.roadSigns1.getyOfBackground1() >= Window.getWINDOW_HEIGHT()){
-                    this.roadSigns1.setyOfBackground1(-(Window.getWINDOW_HEIGHT() - 10));
-                    this.counter++;
-                }
-                if (this.roadSigns1.getyOfBackground2() >= Window.getWINDOW_HEIGHT()){
-                    this.roadSigns1.setyOfBackground2(-(Window.getWINDOW_HEIGHT() - 10));
-                    this.counter++;
-                }
-
-
-
-                if (this.roadSigns1.getYOfLines()>=750){
-                    this.roadSigns1.setYOfLines(-250);
-                }
-                if (this.roadSigns2.getYOfLines()>=750){
-                    this.roadSigns2.setYOfLines(-250);
-                }
-                if (this.roadSigns3.getYOfLines()>=750){
-                    this.roadSigns3.setYOfLines(-250);
-                }
-                if (this.roadSigns4.getYOfLines()>=750){
-                    this.roadSigns4.setYOfLines(-250);
-                }
-
-
-                if (this.roadSigns1.getyOfRedWhite1() >= (Window.getWINDOW_HEIGHT())){
-                    this.roadSigns1.setyOfRedWhite1(-(Window.getWINDOW_HEIGHT()));
-                }
-                if (this.roadSigns1.getyOfRedWhite2() >= Window.getWINDOW_HEIGHT()){
-                    this.roadSigns1.setyOfRedWhite2(-(Window.getWINDOW_HEIGHT()));
-                }
-
-
-                if (this.carsRectangle.getyOfCar1()>=800){
-                    this.carsRectangle.setYOfCar1(-(random1.nextInt(50 , 9000)));
-                }
-                if (this.carsRectangle.getyOfCar2()>=800){
-                    this.carsRectangle.setYOfCar2(-(random2.nextInt(50 , 9000)));
-                }
-                if (this.carsRectangle.getyOfCar3()>=800){
-                    this.carsRectangle.setyOfCar3(-(random3.nextInt(50, 9000)));
-                }
-                if (this.carsRectangle.getyOfCar4() >= 800) {
-                    this.carsRectangle.setyOfCar4(-(random4.nextInt(1000, 9000)));
-                }
-                if (this.carsRectangle.getyOfCar5() >= 800) {
-                    this.carsRectangle.setyOfCar5(-(random5.nextInt(1000, 9000)));
-                }
-                if (this.carsRectangle.getyOfCar6() >= 800) {
-                    this.carsRectangle.setyOfCar6(-(random6.nextInt(1000, 9000)));
-                }
-
-
-
-                boolean hasCollision = collision(this.carsRectangle);
-                if (hasCollision) {
-                    this.gameOverScreen.setVisible(true);
-                    this.gameOverScreen.setCloseOptionVisible();
-                    setVisible(false);
-
-                }
-
-
-                updatePlayer();
-                safetyDistance();
 
 //                if (pauseGame.getModel().isPressed()){
 //                    stopEngineAudio();
@@ -225,35 +243,45 @@ public class GameScene extends JPanel implements KeyListener {
 //                }
 
 
-                long dx = 0;
-                try {
-                    if (pressedKey[0]) {
-                        dx += 1;
-                    }
+                    try {
 
-                    if (pressedKey[1]) {
-                        dx -= 1;
-                    }
-                    this.carPlayer.move(dx);
 
-                    if (this.counter <= 15) {
-                        Thread.sleep(8);
-                    } else if (this.counter > 15 && this.counter <= 35 ){
-                        Thread.sleep(7);
-                    } else if (this.counter > 35  && this.counter <=60
-                    ) {
-                        Thread.sleep(6);
+//                        adjustGameSpeed();
+
+
+                        if (this.counter <= 15) {
+                            Thread.sleep(10);
+                        } else if (this.counter > 15 && this.counter <= 35) {
+                            Thread.sleep(9);
+                        } else if (this.counter > 35 && this.counter <= 60
+                        ) {
+                            Thread.sleep(7);
+                        } else if (this.counter > 60 && this.counter <= 80) {
+                            Thread.sleep(6);
+                        } else if (this.counter > 80) {
+                            Thread.sleep(5);
+                        }
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
                     }
-                    else if (this.counter > 60 && this.counter <=80) {
-                        Thread.sleep(5);
-                    } else if (this.counter > 80){
-                        Thread.sleep(4);
-                    }
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
                 }
             }
         }).start();
+    }
+
+    private void updatePlayerMovementBasedOnMarker() {
+        int markerPosition = OpenCVProcessor.getMarkerPosition();
+         dx = 0;
+        if (pressedKey[0] || markerPosition == 0) {        ///// ימינה
+            dx += 4;
+        } else if (pressedKey[1] || markerPosition == 2) {        ////שמאלה
+            dx -= 4;
+        } else {
+            dx = 0;
+        }
+
+        this.carPlayer.move(dx);
+
     }
 
     public boolean collision(CarsRectangle carsRectangle) {
